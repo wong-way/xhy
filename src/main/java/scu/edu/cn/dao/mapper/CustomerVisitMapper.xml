@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.CustomerVisitMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.CustomerVisit" >
+    <id column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <id column="visit_date" property="visitDate" jdbcType="DATE" />
+    <result column="staff_id" property="staffId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="scu.edu.cn.dao.entity.CustomerVisit" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    customer_id, visit_date, staff_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="scu.edu.cn.dao.entity.CustomerVisitKey" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from customer_visit
+    where customer_id = #{customerId,jdbcType=INTEGER}
+      and visit_date = #{visitDate,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="scu.edu.cn.dao.entity.CustomerVisitKey" >
+    delete from customer_visit
+    where customer_id = #{customerId,jdbcType=INTEGER}
+      and visit_date = #{visitDate,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.CustomerVisit" >
+    insert into customer_visit (customer_id, visit_date, staff_id, 
+      content)
+    values (#{customerId,jdbcType=INTEGER}, #{visitDate,jdbcType=DATE}, #{staffId,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.CustomerVisit" >
+    insert into customer_visit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="visitDate != null" >
+        visit_date,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="visitDate != null" >
+        #{visitDate,jdbcType=DATE},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.CustomerVisit" >
+    update customer_visit
+    <set >
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=INTEGER}
+      and visit_date = #{visitDate,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="scu.edu.cn.dao.entity.CustomerVisit" >
+    update customer_visit
+    set staff_id = #{staffId,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+      and visit_date = #{visitDate,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.CustomerVisit" >
+    update customer_visit
+    set staff_id = #{staffId,jdbcType=INTEGER}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+      and visit_date = #{visitDate,jdbcType=DATE}
+  </update>
+
+  <select id="selectAllCustomerVisit" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from customer_visit
+  </select>
+</mapper>

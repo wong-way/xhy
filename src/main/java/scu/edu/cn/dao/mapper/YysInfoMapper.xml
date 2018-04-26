@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.YysInfoMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.YysInfo" >
+    <id column="yys_id" property="yysId" jdbcType="INTEGER" />
+    <result column="yys_name" property="yysName" jdbcType="VARCHAR" />
+    <result column="yys_photo" property="yysPhoto" jdbcType="VARCHAR" />
+    <result column="yys_age" property="yysAge" jdbcType="INTEGER" />
+    <result column="yys_constellation" property="yysConstellation" jdbcType="VARCHAR" />
+    <result column="yys_education" property="yysEducation" jdbcType="VARCHAR" />
+    <result column="yys_marriage" property="yysMarriage" jdbcType="BIT" />
+    <result column="yys_certificate" property="yysCertificate" jdbcType="VARCHAR" />
+    <result column="yys_recommended_reason" property="yysRecommendedReason" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yys_id, yys_name, yys_photo, yys_age, yys_constellation, yys_education, yys_marriage, 
+    yys_certificate, yys_recommended_reason
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yys_info
+    where yys_id = #{yysId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yys_info
+    where yys_id = #{yysId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.YysInfo" >
+    insert into yys_info (yys_id,yys_name,yys_photo,yys_age,yys_constellation,yys_education,yys_marriage,yys_certificate,yys_recommended_reason)
+    values (#{yysId,jdbcType=INTEGER}, #{yysName,jdbcType=VARCHAR}, #{yysPhoto,jdbcType=VARCHAR}, 
+      #{yysAge,jdbcType=INTEGER}, #{yysConstellation,jdbcType=VARCHAR}, #{yysEducation,jdbcType=VARCHAR}, 
+      #{yysMarriage,jdbcType=BIT}, #{yysCertificate,jdbcType=VARCHAR}, #{yysRecommendedReason,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.YysInfo" >
+    insert into yys_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yysId != null" >
+        yys_id,
+      </if>
+      <if test="yysName != null" >
+        yys_name,
+      </if>
+      <if test="yysPhoto != null" >
+        yys_photo,
+      </if>
+      <if test="yysAge != null" >
+        yys_age,
+      </if>
+      <if test="yysConstellation != null" >
+        yys_constellation,
+      </if>
+      <if test="yysEducation != null" >
+        yys_education,
+      </if>
+      <if test="yysMarriage != null" >
+        yys_marriage,
+      </if>
+      <if test="yysCertificate != null" >
+        yys_certificate,
+      </if>
+      <if test="yysRecommendedReason != null" >
+        yys_recommended_reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yysId != null" >
+        #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="yysName != null" >
+        #{yysName,jdbcType=VARCHAR},
+      </if>
+      <if test="yysPhoto != null" >
+        #{yysPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="yysAge != null" >
+        #{yysAge,jdbcType=INTEGER},
+      </if>
+      <if test="yysConstellation != null" >
+        #{yysConstellation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysEducation != null" >
+        #{yysEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysMarriage != null" >
+        #{yysMarriage,jdbcType=BIT},
+      </if>
+      <if test="yysCertificate != null" >
+        #{yysCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="yysRecommendedReason != null" >
+        #{yysRecommendedReason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.YysInfo" >
+    update yys_info
+    <set >
+      <if test="yysName != null" >
+        yys_name = #{yysName,jdbcType=VARCHAR},
+      </if>
+      <if test="yysPhoto != null" >
+        yys_photo = #{yysPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="yysAge != null" >
+        yys_age = #{yysAge,jdbcType=INTEGER},
+      </if>
+      <if test="yysConstellation != null" >
+        yys_constellation = #{yysConstellation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysEducation != null" >
+        yys_education = #{yysEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysMarriage != null" >
+        yys_marriage = #{yysMarriage,jdbcType=BIT},
+      </if>
+      <if test="yysCertificate != null" >
+        yys_certificate = #{yysCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="yysRecommendedReason != null" >
+        yys_recommended_reason = #{yysRecommendedReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where yys_id = #{yysId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.YysInfo" >
+    update yys_info
+    set yys_name = #{yysName,jdbcType=VARCHAR},
+      yys_photo = #{yysPhoto,jdbcType=VARCHAR},
+      yys_age = #{yysAge,jdbcType=INTEGER},
+      yys_constellation = #{yysConstellation,jdbcType=VARCHAR},
+      yys_education = #{yysEducation,jdbcType=VARCHAR},
+      yys_marriage = #{yysMarriage,jdbcType=BIT},
+      yys_certificate = #{yysCertificate,jdbcType=VARCHAR},
+      yys_recommended_reason = #{yysRecommendedReason,jdbcType=VARCHAR}
+    where yys_id = #{yysId,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateByYysNameSelective" parameterType="scu.edu.cn.dao.entity.YysInfo">
+    update yys_info
+    <set>
+      <if test="yysPhoto != null">
+        yys_photo = #{yysPhoto,jdbcType=VARCHAR},
+      </if>
+      <if test="yysAge != null">
+        yys_age = #{yysAge,jdbcType=INTEGER},
+      </if>
+      <if test="yysConstellation != null">
+        yys_constellation = #{yysConstellation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysEducation != null">
+        yys_education = #{yysEducation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysMarriage != null">
+        yys_marriage = #{yysMarriage,jdbcType=BIT},
+      </if>
+      <if test="yysCertificate != null">
+        yys_certificate = #{yysCertificate,jdbcType=VARCHAR},
+      </if>
+      <if test="yysRecommendedReason != null">
+        yys_recommended_reason = #{yysRecommendedReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where yys_name = #{yysName,jdbcType=VARCHAR}
+  </update>
+  <select id="selectAllYysInfo" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from yys_info
+  </select>
+
+
+</mapper>

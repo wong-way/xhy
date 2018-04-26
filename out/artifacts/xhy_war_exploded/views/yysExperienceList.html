@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:03 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - Bootstrap Table</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/xhy/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="/xhy/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/xhy/css/animate.min.css" rel="stylesheet">
+    <link href="/xhy/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <h2 class="example-title">育婴师工作经历管理</h2>
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button type="button" class="btn btn-outline btn-default"
+                                        data-toggle="modal" data-target="#addModel">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-outline btn-default" id="editYysExperience"
+                                >
+                                    <i class="glyphicon  glyphicon-edit" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline btn-default" id="deleteYysExperience">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <table id="exampleTableEvents" data-height="800" data-mobile-responsive="true">
+                                <thead>
+                                <tr>
+                                    <th data-field="checkBox" data-checkbox="true"></th>
+                                    <th data-field="yysExperienceId">ID</th>
+                                    <th data-field="yysWorkTime">工作时间段</th>
+                                    <th data-field="yysWorkContent">工作内容</th>
+                                    <th data-field="yysCustomerEvaluation">客户评价</th>
+                                    <th data-field="yysId">育婴师编号</th>
+                                </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="addModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>添加育婴师工作经历</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">ID：</label>
+                            <div class="col-sm-8">
+                                <input id="yysExperienceId" name="yysExperienceId" class="form-control error" type="number"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作时间段：</label>
+                            <div class="col-sm-8">
+                                <input id="yysWorkTime" name="yysWorkTime" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作内容：</label>
+                            <div class="col-sm-8">
+                                <input id="yysWorkContent" name="yysWorkContent" class="form-control error" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">客户评价：</label>
+                            <div class="col-sm-8">
+                                <input id="yysCustomerEvaluation" name="yysCustomerEvaluation" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">育婴师编号：</label>
+                            <div class="col-sm-8">
+                                <input id="yysId" name="yysId" class="form-control error" type="number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="addYysExperience">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="editModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>修改育婴师工作经历</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm1">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">ID：</label>
+                            <div class="col-sm-8">
+                                <input id="yysExperienceId1" name="yysExperienceId" class="form-control error" type="number"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作时间段：</label>
+                            <div class="col-sm-8">
+                                <input id="yysWorkTime1" name="yysWorkTime" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作内容：</label>
+                            <div class="col-sm-8">
+                                <input id="yysWorkContent1" name="yysWorkContent" class="form-control error" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">客户评价：</label>
+                            <div class="col-sm-8">
+                                <input id="yysCustomerEvaluation1" name="yysCustomerEvaluation" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">育婴师编号：</label>
+                            <div class="col-sm-8">
+                                <input id="yysId1" name="yysId" class="form-control error" type="number">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="updateYysExperience">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- End Panel Other -->
+</div>
+<script src="/xhy/js/jquery.min.js?v=2.1.4"></script>
+<script src="/xhy/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/xhy/js/content.min.js?v=1.0.0"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/xhy/js/tableExport.js"></script>
+<script src="/xhy/js/bootstrap-table-export.js"></script>
+<script src="/xhy/js/demo/bootstrap-table-demo-yys-experience.min.js"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="/xhy/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/xhy/js/plugins/validate/jquery.validate.min.js"></script>
+
+
+
+<script>
+    $('#deleteYysExperience').click(function () {
+            var table = $('#exampleTableEvents')
+            var yysExperienceList = table.bootstrapTable('getSelections')
+            yysExperience = yysExperienceList[0];
+            if (yysExperience == null) {
+                swal("提示！", "请选择一行信息。", "error")
+                return
+            }
+            swal({
+                title: "您确定要删除这条信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，我要删除！",
+                cancelButtonText: "让我再考虑一下…",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                        url: "api/deleteYysExperience",
+                        type: "post",
+                        data: JSON.stringify({
+                            yysExperienceId: yysExperience.yysExperienceId,
+                            yysWorkTime: yysExperience.yysWorkTime,
+                            yysWorkContent: yysExperience.yysWorkContent,
+                            yysCustomerEvaluation: yysExperience.yysCustomerEvaluation,
+                            yysId: yysExperience.yysId
+                        }),
+
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (data) {
+                            console.log(data)
+                            if (data.code = 4) {
+                                swal("删除成功！", "您已经永久删除了这条信息。", "success")
+                            }
+                            else
+                                swal("删除失败！", "请稍后重试。", "error");
+                        },
+                        error: function (data) {
+                            swal("删除失败！", "请稍后重试。", "error");
+                        }
+                    }
+                )
+                table.bootstrapTable('remove', {filed: 'yysExperienceId', value: yysExperience.yysExperienceId})
+                table.bootstrapTable('refresh');
+
+
+            })
+        }
+    );
+
+
+</script>
+<script>
+
+    $('#addYysExperience').click(
+        function () {
+//            if (!$("#infoForm").valid()) {
+//                return;
+//            }
+            let yysExperienceId = $('#yysExperienceId').val()
+            let yysWorkTime = $('#yysWorkTime').val()
+            let yysWorkContent= $('#yysWorkContent').val()
+            let yysCustomerEvaluation= $('#yysCustomerEvaluation').val()
+            let yysId = $('#yysId').val()
+
+
+            $.ajax({
+                    url: "api/addYysExperience",
+                    type: "post",
+                    data: JSON.stringify({
+                        yysExperienceId: yysExperienceId,
+                        yysWorkTime: yysWorkTime,
+                        yysWorkContent: yysWorkContent,
+                        yysCustomerEvaluation: yysCustomerEvaluation,
+                        yysId: yysId
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#myModal').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "添加成功！", text: "您已经成功添加了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        } else if (data.code == 6) {
+                            swal({title: "添加失败！", text: "用户名已存在。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                        else
+                            swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                    },
+                    error: function (data) {
+                        $('#myModal').modal('toggle')
+                        console.log(data)
+                        swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+<script>
+    $('#editYysExperience').click(function () {
+        var table = $('#exampleTableEvents')
+        var yysExperienceList = table.bootstrapTable('getSelections')
+        var yysExperience = yysExperienceList[0];
+        if (yysExperience == null) {
+            swal("提示！", "请选择一行信息。", "error")
+            return
+        }
+        $('#yysExperienceId1').val(yysExperience.yysExperienceId)
+//        data-toggle="modal" data-target="#editModel"
+        $('#editModel').modal('toggle');
+    })
+
+    $('#updateYysExperience').click(
+        function () {
+            //    if (!$("#infoForm1").valid()) {
+            //       return;
+            //   }
+
+            let yysExperienceId = $('#yysExperienceId1').val()
+            let yysWorkTime = $('#yysWorkTime1').val()
+            let yysWorkContent= $('#yysWorkContent1').val()
+            let yysCustomerEvaluation= $('#yysCustomerEvaluation1').val()
+            let yysId = $('#yysId1').val()
+            console.log(yysExperienceId + yysWorkTime+yysWorkContent+yysCustomerEvaluation+ yysId )
+            $.ajax({
+                    url: "api/updateYysExperience",
+                    type: "post",
+                    data: JSON.stringify({
+                        yysExperienceId:yysExperienceId,
+                        yysWorkTime: yysWorkTime,
+                        yysWorkContent: yysWorkContent,
+                        yysCustomerEvaluation: yysCustomerEvaluation,
+                        yysId: yysId
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "更新成功！", text: "您已经成功更新了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        }
+                        else
+                            swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        $('#exampleTableEvents').bootstrapTable('refresh');
+
+                    },
+                    error: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+
+
+
+
+
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:06 GMT -->
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.PromotionRecordMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.PromotionRecord" >
+    <id column="promotion_record_id" property="promotionRecordId" jdbcType="INTEGER" />
+    <result column="yys_id" property="yysId" jdbcType="INTEGER" />
+    <result column="yys_previous_level" property="yysPreviousLevel" jdbcType="VARCHAR" />
+    <result column="yys_current_level" property="yysCurrentLevel" jdbcType="VARCHAR" />
+    <result column="yys_promotion_time" property="yysPromotionTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    promotion_record_id, yys_id, yys_previous_level, yys_current_level, yys_promotion_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from promotion_record
+    where promotion_record_id = #{promotionRecordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from promotion_record
+    where promotion_record_id = #{promotionRecordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.PromotionRecord" >
+    insert into promotion_record (promotion_record_id, yys_id, yys_previous_level, 
+      yys_current_level, yys_promotion_time)
+    values (#{promotionRecordId,jdbcType=INTEGER}, #{yysId,jdbcType=INTEGER}, #{yysPreviousLevel,jdbcType=VARCHAR}, 
+      #{yysCurrentLevel,jdbcType=VARCHAR}, #{yysPromotionTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.PromotionRecord" >
+    insert into promotion_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="promotionRecordId != null" >
+        promotion_record_id,
+      </if>
+      <if test="yysId != null" >
+        yys_id,
+      </if>
+      <if test="yysPreviousLevel != null" >
+        yys_previous_level,
+      </if>
+      <if test="yysCurrentLevel != null" >
+        yys_current_level,
+      </if>
+      <if test="yysPromotionTime != null" >
+        yys_promotion_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="promotionRecordId != null" >
+        #{promotionRecordId,jdbcType=INTEGER},
+      </if>
+      <if test="yysId != null" >
+        #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="yysPreviousLevel != null" >
+        #{yysPreviousLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yysCurrentLevel != null" >
+        #{yysCurrentLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yysPromotionTime != null" >
+        #{yysPromotionTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.PromotionRecord" >
+    update promotion_record
+    <set >
+      <if test="yysId != null" >
+        yys_id = #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="yysPreviousLevel != null" >
+        yys_previous_level = #{yysPreviousLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yysCurrentLevel != null" >
+        yys_current_level = #{yysCurrentLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yysPromotionTime != null" >
+        yys_promotion_time = #{yysPromotionTime,jdbcType=DATE},
+      </if>
+    </set>
+    where promotion_record_id = #{promotionRecordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.PromotionRecord" >
+    update promotion_record
+    set yys_id = #{yysId,jdbcType=INTEGER},
+      yys_previous_level = #{yysPreviousLevel,jdbcType=VARCHAR},
+      yys_current_level = #{yysCurrentLevel,jdbcType=VARCHAR},
+      yys_promotion_time = #{yysPromotionTime,jdbcType=DATE}
+    where promotion_record_id = #{promotionRecordId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllPromotionRecord" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from promotion_record
+  </select>
+</mapper>

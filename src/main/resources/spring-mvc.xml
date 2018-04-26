@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="scu.edu.cn.controller"/>
+    <context:component-scan base-package="scu.edu.cn.dao.mapper"/>
+    <context:component-scan base-package="scu.edu.cn.dao.entity"/>
+    <context:component-scan base-package="scu.edu.cn.service"/>
+    <context:component-scan base-package="scu.edu.cn.dto"/>
+
+
+    <mvc:default-servlet-handler default-servlet-name="default"/>
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!-- 拦截所有URL中包含/的请求 -->
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/**/*main*"/>
+            <mvc:exclude-mapping path="/**/*contact*"/>
+            <mvc:exclude-mapping path="/**/*insertCustomer*"/>
+            <mvc:exclude-mapping path="/**/fonts/*"/>
+            <mvc:exclude-mapping path="/**/*.css"/>
+            <mvc:exclude-mapping path="/**/*.js"/>
+            <mvc:exclude-mapping path="/**/*.mp4"/>
+            <mvc:exclude-mapping path="/**/*.png"/>
+            <mvc:exclude-mapping path="/**/*.gif"/>
+            <mvc:exclude-mapping path="/**/*.jpg"/>
+            <mvc:exclude-mapping path="/**/*.jpeg"/>
+            <mvc:exclude-mapping path="/**/*login*"/>
+            <mvc:exclude-mapping path="/**/*Login*"/>
+            <mvc:exclude-mapping path="/**/*Register*"/>
+            <mvc:exclude-mapping path="/**/*register*"/>
+            <bean class="scu.edu.cn.interceptor.LoginInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+</beans>

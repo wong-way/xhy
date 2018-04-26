@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.YysWorkStateMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.YysWorkState" >
+    <id column="yys_id" property="yysId" jdbcType="INTEGER" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="work_place" property="workPlace" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="DATE" />
+    <result column="end_time" property="endTime" jdbcType="DATE" />
+    <result column="work_state" property="workState" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yys_id, customer_id, work_place, start_time, end_time, work_state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from yys_work_state
+    where yys_id = #{yysId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yys_work_state
+    where yys_id = #{yysId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.YysWorkState" >
+    insert into yys_work_state (yys_id, customer_id, work_place, 
+      start_time, end_time, work_state
+      )
+    values (#{yysId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{workPlace,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=DATE}, #{endTime,jdbcType=DATE}, #{workState,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.YysWorkState" >
+    insert into yys_work_state
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yysId != null" >
+        yys_id,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="workPlace != null" >
+        work_place,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="workState != null" >
+        work_state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yysId != null" >
+        #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="workPlace != null" >
+        #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=DATE},
+      </if>
+      <if test="workState != null" >
+        #{workState,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.YysWorkState" >
+    update yys_work_state
+    <set >
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="workPlace != null" >
+        work_place = #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=DATE},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=DATE},
+      </if>
+      <if test="workState != null" >
+        work_state = #{workState,jdbcType=BIT},
+      </if>
+    </set>
+    where yys_id = #{yysId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.YysWorkState" >
+    update yys_work_state
+    set customer_id = #{customerId,jdbcType=INTEGER},
+      work_place = #{workPlace,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=DATE},
+      end_time = #{endTime,jdbcType=DATE},
+      work_state = #{workState,jdbcType=BIT}
+    where yys_id = #{yysId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllYysWorkState" resultMap="BaseResultMap">
+    SELECT
+    yys_id,customer_id,work_place,start_time,end_time,work_state
+    FROM yys_work_state
+  </select>
+</mapper>

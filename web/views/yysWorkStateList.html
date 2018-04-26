@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:03 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - Bootstrap Table</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/xhy/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="/xhy/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/xhy/css/animate.min.css" rel="stylesheet">
+    <link href="/xhy/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>育婴师工作状态表</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#">选项1</a>
+                    </li>
+                    <li><a href="#">选项2</a>
+                    </li>
+                </ul>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+
+                <div class="col-sm-12">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <h4 class="example-title"></h4>
+                        <div class="example">
+                            <div class= id="examplebtTableEventsResult" role="alert">
+
+                            </div>
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button type="button" class="btn btn-outline btn-default"
+                                        data-toggle="modal" data-target="#addModel">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-outline btn-default" id="editYysWorkState"
+                                >
+                                    <i class="glyphicon  glyphicon-edit" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline btn-default" id="deleteYysWorkState">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <table id="exampleTableEvents" data-height="550" data-mobile-responsive="true">
+                                <thead>
+                                <tr>
+                                    <th data-checkbox="true" data-field="state"></th>
+                                    <th data-field="yysId">育婴师ID</th>
+                                    <th data-field="customerId">客户ID</th>
+                                    <th data-field="workPlace">工作地点</th>
+                                    <th data-field="startTime" data-formatter="changeDate">开始工作时间</th>
+                                    <th data-field="endTime" data-formatter="changeDate">结束工作时间</th>
+                                    <th data-field="workState">工作状态</th>
+                                </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>添加育婴师工作状态</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">育婴师ID：</label>
+                            <div class="col-sm-8">
+                                <input id="yysId" name="yysId" class="form-control error" type="text"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">客户ID：</label>
+                            <div class="col-sm-8">
+                                <input id="customerId" name="customerId" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作地点：</label>
+                            <div class="col-sm-8">
+                                <input id="workPlace" name="workPlace" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">开始工作时间：</label>
+                            <div class="col-sm-8">
+                                <input id="startTime" name="startTime" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">结束工作时间：</label>
+                            <div class="col-sm-8">
+                                <input id="endTime" name="endTime" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作状态：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="workState">
+                                    <option>在职</option>
+                                    <option>离职</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="checkbox" id="agree" name="agree">
+                                        我已经认真阅读并同意《H+使用协议》
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="addYysWorkState">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="editModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>编辑育婴师工作状态</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm1">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">育婴师ID：</label>
+                            <div class="col-sm-8">
+                                <input id="yysId1" name="yysId" class="form-control error" type="text"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">客户ID：</label>
+                            <div class="col-sm-8">
+                                <input id="customerId1" name="customerId" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作地点：</label>
+                            <div class="col-sm-8">
+                                <input id="workPlace1" name="workPlace" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">开始工作时间：</label>
+                            <div class="col-sm-8">
+                                <input id="startTime1" name="startTime" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">结束工作时间：</label>
+                            <div class="col-sm-8">
+                                <input id="endTime1" name="endTime" class="form-control"
+                                       type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">工作状态：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="workState1">
+                                    <option>在职</option>
+                                    <option>离职</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="checkbox" id="agree1" name="agree">
+                                        我已经认真阅读并同意《H+使用协议》
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="updateYysWorkState">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- End Panel Other -->
+</div>
+<script src="/xhy/js/jquery.min.js?v=2.1.4"></script>
+<script src="/xhy/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/xhy/js/content.min.js?v=1.0.0"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/xhy/js/tableExport.js"></script>
+<script src="/xhy/js/bootstrap-table-export.js"></script>
+<script src="/xhy/js/demo/bootstrap-table-demo-yys-work-state.min.js"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="/xhy/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/xhy/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="/xhy/js/demo/user-validate.js"></script>
+<script>
+    function changeDate(value) {
+        var dateVal = value + "";
+        if (value != null) {
+            var date = new Date(parseInt(dateVal.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate + " ";
+        }
+    }
+
+</script>
+
+<script>
+    $('#deleteYysWorkState').click(function () {
+            var table = $('#exampleTableEvents')
+            var yysWorkStateList = table.bootstrapTable('getSelections')
+            yysWorkState = yysWorkStateList[0];
+            if (yysWorkState == null) {
+                swal("提示！", "请选择一行信息。", "error")
+                return
+            }
+            swal({
+                title: "您确定要删除这条信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，我要删除！",
+                cancelButtonText: "让我再考虑一下…",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                        url: "api/deleteYysWorkState",
+                        type: "post",
+                        data: {
+                            yysId: yysWorkState.yysId
+                        },
+                        success: function (data) {
+                            console.log(data)
+                            if (data.code == 4) {
+                                swal("删除成功！", "您已经永久删除了这条信息。", "success")
+                            }
+                            else
+                                swal("删除失败！", "请稍后重试。", "error");
+                        },
+                        error: function (data) {
+                            swal("删除失败！", "请稍后重试。", "error");
+                        }
+                    }
+                )
+                table.bootstrapTable('remove', {filed: 'yysId', value: yysWorkState.yysId})
+                table.bootstrapTable('refresh');
+
+
+            })
+        }
+    );
+
+
+</script>
+<script>
+
+    $('#addYysWorkState').click(
+        function () {
+            if (!$("#infoForm").valid()) {
+                return;
+            }
+            let yysId = $('#yysId').val()
+            let customerId = $('#customerId').val()
+            let workPlace = $('#workPlace').val()
+            let startTime = $('#startTime').val()
+            let endTime = $('#endTime').val()
+            let isworkState=$('#workState').val()
+            alert(isworkState)
+            let workState
+            if (isworkState == "在职")
+                workState = true
+            else
+                workState = false
+
+            $.ajax({
+                    url: "api/addYysWorkState",
+                    type: "post",
+                    data: JSON.stringify({
+                        yysId: yysId,
+                        customerId: customerId,
+                        workPlace: workPlace,
+                        startTime:startTime,
+                        endTime:endTime,
+                        workState:workState
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#myModal').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "添加成功！", text: "您已经成功添加了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        } else if (data.code == 6) {
+                            swal({title: "添加失败！", text: "用户名已存在。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                        else
+                            swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                    },
+                    error: function (data) {
+                        $('#myModal').modal('toggle')
+                        console.log(data)
+                        swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+<script>
+    $('#editYysWorkState').click(function () {
+        var table = $('#exampleTableEvents')
+        var yysWorkStateList = table.bootstrapTable('getSelections')
+        var yysWorkState = yysWorkStateList[0];
+        if (yysWorkState == null) {
+            swal("提示！", "请选择一行信息。", "error")
+            return
+        }
+        $('#yysId1').val(yysWorkState.yysId)
+//        data-toggle="modal" data-target="#editModel"
+        $('#editModel').modal('toggle');
+    })
+
+    $('#updateYysWorkState').click(
+        function () {
+            if (!$("#infoForm1").valid()) {
+                return;
+            }
+
+            let yysId = $('#yysId1').val()
+            let customerId = $('#customerId1').val()
+            let workPlace = $('#workPlace1').val()
+            let startTime = $('#startTime1').val()
+            let endTime = $('#endTime1').val()
+            let isworkState=$('#workState')
+            let workState
+            if (isworkState == "在职")
+                workState = true
+            else
+                workState = false
+            // console.log(username + password + admin)
+            $.ajax({
+                    url: "api/updateYysWorkState",
+                    type: "post",
+                    data: JSON.stringify({
+                        yysId: yysId,
+                        customerId: customerId,
+                        workPlace: workPlace,
+                        startTime:startTime,
+                        endTime:endTime,
+                        workState:workState
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "更新成功！", text: "您已经成功更新了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        }
+                        else
+                            swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        $('#exampleTableEvents').bootstrapTable('refresh');
+
+                    },
+                    error: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:06 GMT -->
+</html>

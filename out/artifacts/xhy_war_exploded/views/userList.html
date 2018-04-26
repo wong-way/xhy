@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:03 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>新华亿母婴管理系统</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/xhy/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="/xhy/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/xhy/css/animate.min.css" rel="stylesheet">
+    <link href="/xhy/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+
+        <div class="ibox-content">
+            <div class="row row-lg">
+                <div class="col-sm-12">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button type="button" class="btn btn-outline btn-default"
+                                        data-toggle="modal" data-target="#addModel">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-outline btn-default" id="editUser">
+                                    <i class="glyphicon  glyphicon-edit" aria-hidden="true"></i>
+                                </button>
+                                <!--<button type="button" class="btn btn-outline btn-default" id="deleteUser">-->
+                                <!--<i class="glyphicon glyphicon-trash" aria-hidden="true"></i>-->
+                                <!--</button>-->
+                                <button type="button" class="btn btn-outline btn-default" id="deleteUsers">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <table id="exampleTableEvents" data-height="720" data-mobile-responsive="true">
+                                <thead>
+                                <tr>
+                                    <th class="text-center" data-checkbox="true" data-field="state"></th>
+                                    <th class="text-center" data-field="username">用户名</th>
+                                    <th class="text-center" data-field="password">密码</th>
+                                    <th class="text-center" data-field="token">TOKEN</th>
+                                    <th class="text-center" data-field="isAdmin" data-formatter="changeStatus">身份</th>
+                                    <th class="text-center" data-field="customerId" data-formatter="changeBind">绑定的顾客号
+                                    </th>
+                                    <th class="text-center" data-formatter="change">操作</th>
+                                </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>添加用户</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">用户名：</label>
+                            <div class="col-sm-8">
+                                <input id="username" name="username" class="form-control error" type="text"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">密码：</label>
+                            <div class="col-sm-8">
+                                <input id="password" name="password" class="form-control" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">确认密码：</label>
+                            <div class="col-sm-8">
+                                <input id="confirm_password" name="confirm_password" class="form-control"
+                                       type="password">
+                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">身份：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="isAdmin">
+                                    <option>普通用户</option>
+                                    <option>管理员</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="checkbox" id="agree" name="agree">
+                                        我已经认真阅读并同意《H+使用协议》
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="addUser">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="editModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>添加用户</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm1">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">用户名：</label>
+                            <div class="col-sm-8">
+                                <input id="username1" name="username" class="form-control error" type="text"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">密码：</label>
+                            <div class="col-sm-8">
+                                <input id="password1" name="password" class="form-control" type="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">确认密码：</label>
+                            <div class="col-sm-8">
+                                <input id="confirm_password1" name="confirm_password" class="form-control"
+                                       type="password">
+                                <span class="help-block m-b-none"><i class="fa fa-info-circle"></i> 请再次输入您的密码</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">身份：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="isAdmin1">
+                                    <option>普通用户</option>
+                                    <option>管理员</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="checkbox" id="agree1" name="agree">
+                                        我已经认真阅读并同意《H+使用协议》
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="updateUser">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- End Panel Other -->
+</div>
+<script src="/xhy/js/jquery.min.js?v=2.1.4"></script>
+<script src="/xhy/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/xhy/js/content.min.js?v=1.0.0"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/xhy/js/tableExport.js"></script>
+<script src="/xhy/js/bootstrap-table-export.js"></script>
+<script src="/xhy/js/demo/bootstrap-table-user.min.js"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="/xhy/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/xhy/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="/xhy/js/demo/user-validate.js"></script>
+<script>
+    function changeStatus(value) {
+        if (value)
+            return "管理员"
+        else
+            return "普通用户"
+
+    }
+</script>
+<script>
+    function changeBind(value) {
+        if (value == "-")
+            return "暂未绑定"
+        else
+            return value
+
+    }
+</script>
+<script>
+    $('#deleteUser').click(function () {
+            var table = $('#exampleTableEvents')
+            var userList = table.bootstrapTable('getSelections')
+            user = userList[0];
+            if (user == null) {
+                swal("提示！", "请选择一行信息。", "error")
+                return
+            }
+            swal({
+                title: "您确定要删除这条信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，我要删除！",
+                cancelButtonText: "让我再考虑一下…",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                        url: "api/deleteUser",
+                        type: "post",
+                        data: JSON.stringify({
+                            userId: user.userId,
+                            username: user.username,
+                            password: user.password,
+                            token: user.token,
+                            customerId: user.customerId,
+                            isAdmin: user.isAdmin
+                        }),
+
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (data) {
+                            console.log(data)
+                            if (data.code = 4) {
+                                swal("删除成功！", "您已经永久删除了这条信息。", "success")
+                            }
+                            else
+                                swal("删除失败！", "请稍后重试。", "error");
+                        },
+                        error: function (data) {
+                            swal("删除失败！", "请稍后重试。", "error");
+                        }
+                    }
+                )
+                table.bootstrapTable('remove', {filed: 'username', value: user.username})
+                table.bootstrapTable('refresh');
+
+
+            })
+        }
+    );
+
+
+</script>
+<script>
+    $('#deleteUsers').click(function () {
+            var table = $('#exampleTableEvents')
+            var userList = table.bootstrapTable('getSelections')
+            console.log(userList)
+            if (userList.length == 0) {
+                swal("提示！", "请选择一行信息。", "error")
+                return
+            }
+            swal({
+                title: "您确定要删除这条信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，我要删除！",
+                cancelButtonText: "让我再考虑一下…",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                        url: "api/deleteUsers",
+                        type: "post",
+                        data: JSON.stringify(userList),
+                        contentType: 'application/json',
+                        success: function (data) {
+                            console.log(data)
+                            if (data.code == 4) {
+                                swal("删除成功！", "您已经永久删除了这条信息。", "success")
+                            }
+                            else
+                                swal("删除失败！", "请稍后重试。", "error");
+                        },
+                        error: function (data) {
+                            swal("删除失败！", "请稍后重试。", "error");
+                        }
+                    }
+                )
+                table.bootstrapTable('refresh');
+//                location.reload();
+
+            })
+        }
+    );
+
+
+</script>
+<script>
+    $('#addUser').click(
+        function () {
+            if (!$("#infoForm").valid()) {
+                return;
+            }
+            let username = $('#username').val()
+            let password = $('#password').val()
+            let admin = $('#isAdmin').val()
+            let isAdmin
+            if (admin == "管理员")
+                isAdmin = true
+            else
+                isAdmin = false
+
+            $.ajax({
+                    url: "api/addUser",
+                    type: "post",
+                    data: JSON.stringify({
+                        username: username,
+                        password: password,
+                        isAdmin: isAdmin
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#myModal').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "添加成功！", text: "您已经成功添加了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        } else if (data.code == 6) {
+                            swal({title: "添加失败！", text: "用户名已存在。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                        else
+                            swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                    },
+                    error: function (data) {
+                        $('#myModal').modal('toggle')
+                        console.log(data)
+                        swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+<script>
+    $('#editUser').click(function () {
+        var table = $('#exampleTableEvents')
+        var userList = table.bootstrapTable('getSelections')
+        var user = userList[0];
+        if (user == null) {
+            swal("提示！", "请选择一行信息。", "error")
+            return
+        }
+        $('#username1').val(user.username)
+        $('#password1').val(user.password)
+        $('#confirm_password1').val(user.password)
+//        data-toggle="modal" data-target="#editModel"
+        $('#editModel').modal('toggle');
+    })
+
+    $('#updateUser').click(
+        function () {
+            if (!$("#infoForm1").valid()) {
+                return;
+            }
+
+            let username = $('#username1').val()
+            let password = $('#password1').val()
+            let admin = $('#isAdmin1').val()
+            let isAdmin
+            if (admin == "管理员")
+                isAdmin = true
+            else
+                isAdmin = false
+            console.log(username + password + admin)
+            $.ajax({
+                    url: "api/updateUser",
+                    type: "post",
+                    data: JSON.stringify({
+                        username: username,
+                        password: password,
+                        isAdmin: isAdmin
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "更新成功！", text: "您已经成功更新了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        }
+                        else
+                            swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        $('#exampleTableEvents').bootstrapTable('refresh');
+
+                    },
+                    error: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+
+</script>
+<script>
+
+    function change(value) {
+        return "<button class=\"btn btn-info \" type=\"button\"><i class=\"fa fa-paste\"></i> 编辑</button>"
+    }
+
+    $('#exampleTableEvents').on('click-cell.bs.table', function (field, row, value, $element) {
+        console.log(row)
+        if (row == 6) {
+            var user =$element
+            $('#username1').val(user.username)
+            $('#password1').val(user.password)
+            $('#confirm_password1').val(user.password)
+
+            $('#editModel').modal('toggle');
+        }
+    })
+
+
+</script>
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:06 GMT -->
+</html>

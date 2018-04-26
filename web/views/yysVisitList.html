@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:03 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - Bootstrap Table</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/xhy/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="/xhy/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/xhy/css/animate.min.css" rel="stylesheet">
+    <link href="/xhy/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+
+                <div class="col-sm-12">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+                        <h2 class="example-title">育婴师回访记录管理</h2>
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button type="button" class="btn btn-outline btn-default"
+                                        data-toggle="modal" data-target="#addModel">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-outline btn-default" id="editYysVisit"
+                                >
+                                    <i class="glyphicon  glyphicon-edit" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline btn-default" id="deleteYysVisit">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <table id="exampleTableEvents" data-height="800" data-mobile-responsive="true">
+                                <thead>
+                                <tr>
+                                    <th data-field="checkBox" data-checkbox="true"></th>
+                                    <th data-field="yysId">育婴师编号</th>
+                                    <th data-field="visitDate" data-formatter="changeDate">回访日期</th>
+                                    <th data-field="content">回访内容</th>
+                                </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="addModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>添加育婴师回访记录</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">育婴师编号：</label>
+                            <div class="col-sm-8">
+                                <input id="yysId" name="yysId" class="form-control error" type="number"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">回访日期：</label>
+                            <div class="col-sm-8">
+                                <input id="visitDate" name="visitDate" class="form-control" type="Date">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">回访内容：</label>
+                            <div class="col-sm-8">
+                                <input id="content" name="content" class="form-control error" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="addYysVisit">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="editModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>修改育婴师回访记录</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm1">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">育婴师编号：</label>
+                            <div class="col-sm-8">
+                                <input id="yysId1" name="yysId" class="form-control error" type="number"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">回访日期：</label>
+                            <div class="col-sm-8">
+                                <input id="visitDate1" name="visitDate" class="form-control" type="Date"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">回访内容：</label>
+                            <div class="col-sm-8">
+                                <input id="content1" name="content" class="form-control error" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="updateYysVisit">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- End Panel Other -->
+</div>
+<script src="/xhy/js/jquery.min.js?v=2.1.4"></script>
+<script src="/xhy/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/xhy/js/content.min.js?v=1.0.0"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/xhy/js/tableExport.js"></script>
+<script src="/xhy/js/bootstrap-table-export.js"></script>
+<script src="/xhy/js/demo/bootstrap-table-demo-yys-visit.min.js"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="/xhy/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/xhy/js/plugins/validate/jquery.validate.min.js"></script>
+
+
+
+<script>
+    function changeDate(value) {
+        var dateVal = value + "";
+        if (value != null) {
+            var date = new Date(parseInt(dateVal.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate + " ";
+        }
+    }
+
+</script>>
+
+
+
+
+
+<script>
+    $('#deleteYysVisit').click(function () {
+            var table = $('#exampleTableEvents')
+            var YysVisitList = table.bootstrapTable('getSelections')
+            yysVisit = YysVisitList[0];
+            if (yysVisit == null) {
+                swal("提示！", "请选择一行信息。", "error")
+                return
+            }
+            swal({
+                title: "您确定要删除这条信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，我要删除！",
+                cancelButtonText: "让我再考虑一下…",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                        url: "api/deleteYysVisit",
+                        type: "post",
+                        data: JSON.stringify({
+                            yysId: yysVisit.yysId,
+                            visitDate: yysVisit.visitDate,
+                            content: yysVisit.content
+                        }),
+
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (data) {
+                            console.log(data)
+                            if (data.code = 4) {
+                                swal("删除成功！", "您已经永久删除了这条信息。", "success")
+                            }
+                            else
+                                swal("删除失败！", "请稍后重试。", "error");
+                        },
+                        error: function (data) {
+                            swal("删除失败！", "请稍后重试。", "error");
+                        }
+                    }
+                )
+                table.bootstrapTable('remove', {filed: 'yysId', value:yysVisit.yysId})
+                table.bootstrapTable('remove', {filed: 'visitDate', value:yysVisit.visitDate})
+                table.bootstrapTable('refresh');
+
+
+            })
+        }
+    );
+
+
+</script>
+<script>
+
+    $('#addYysVisit').click(
+        function () {
+//            if (!$("#infoForm").valid()) {
+//                return;
+//            }
+            let yysId = $('#yysId').val()
+            let visitDate = $('#visitDate').val()
+            let content= $('#content').val()
+
+            $.ajax({
+                    url: "api/addYysVisit",
+                    type: "post",
+                    data: JSON.stringify({
+                        yysId: yysId,
+                        visitDate: visitDate,
+                        content: content
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#myModal').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "添加成功！", text: "您已经成功添加了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        } else if (data.code == 6) {
+                            swal({title: "添加失败！", text: "客户回访记录已存在。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                        else
+                            swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                    },
+                    error: function (data) {
+                        $('#myModal').modal('toggle')
+                        console.log(data)
+                        swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+<script>
+    $('#editYysVisit').click(function () {
+        var table = $('#exampleTableEvents')
+        var yysVisitList = table.bootstrapTable('getSelections')
+        var yysVisit = yysVisitList[0];
+        if (yysVisit == null) {
+            swal("提示！", "请选择一行信息。", "error")
+            return
+        }
+        $('#yysId1').val(yysVisit.yysId)
+        $('#visitDate1').val(yysVisit.visitDate)
+//        data-toggle="modal" data-target="#editModel"
+        $('#editModel').modal('toggle');
+    })
+
+    $('#updateYysVisit').click(
+        function () {
+            //      if (!$("#infoForm1").valid()) {
+            //         return;
+            //    }
+
+            let yysId = $('#yysId1').val()
+            let visitDate = $('#visitDate1').val()
+            let content= $('#content1').val()
+            console.log(yysId + visitDate+content)
+            $.ajax({
+                    url: "api/updateYysVisit",
+                    type: "post",
+                    data: JSON.stringify({
+                        yysId: yysId,
+                        visitDate: visitDate,
+                        content: content
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "更新成功！", text: "您已经成功更新了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        }
+                        else
+                            swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        $('#exampleTableEvents').bootstrapTable('refresh');
+
+                    },
+                    error: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+
+
+
+
+
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:06 GMT -->
+</html>

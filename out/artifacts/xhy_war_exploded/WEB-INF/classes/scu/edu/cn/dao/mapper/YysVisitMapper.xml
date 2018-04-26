@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.YysVisitMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.YysVisit" >
+    <id column="yys_id" property="yysId" jdbcType="INTEGER" />
+    <id column="visit_date" property="visitDate" jdbcType="DATE" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="scu.edu.cn.dao.entity.YysVisit" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yys_id, visit_date
+  </sql>
+  <sql id="Blob_Column_List" >
+    content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="scu.edu.cn.dao.entity.YysVisitKey" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from yys_visit
+    where yys_id = #{yysId,jdbcType=INTEGER}
+      and visit_date = #{visitDate,jdbcType=DATE}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="scu.edu.cn.dao.entity.YysVisitKey" >
+    delete from yys_visit
+    where yys_id = #{yysId,jdbcType=INTEGER}
+      and visit_date = #{visitDate,jdbcType=DATE}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.YysVisit" >
+    insert into yys_visit (yys_id, visit_date, content
+      )
+    values (#{yysId,jdbcType=INTEGER}, #{visitDate,jdbcType=DATE}, #{content,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.YysVisit" >
+    insert into yys_visit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yysId != null" >
+        yys_id,
+      </if>
+      <if test="visitDate != null" >
+        visit_date,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yysId != null" >
+        #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="visitDate != null" >
+        #{visitDate,jdbcType=DATE},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.YysVisit" >
+    update yys_visit
+    <set >
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where yys_id = #{yysId,jdbcType=INTEGER}
+      and visit_date = #{visitDate,jdbcType=DATE}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="scu.edu.cn.dao.entity.YysVisit" >
+    update yys_visit
+    set content = #{content,jdbcType=LONGVARCHAR}
+    where yys_id = #{yysId,jdbcType=INTEGER}
+      and visit_date = #{visitDate,jdbcType=DATE}
+  </update>
+
+  <select id="selectAllYysVisit" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from yys_visit
+  </select>
+</mapper>

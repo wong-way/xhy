@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.YysEvaluationMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.YysEvaluation" >
+    <id column="yys_id" property="yysId" jdbcType="INTEGER" />
+    <id column="contract_id" property="contractId" jdbcType="INTEGER" />
+    <result column="yys_salary" property="yysSalary" jdbcType="DOUBLE" />
+    <result column="yys_customer_evaluation" property="yysCustomerEvaluation" jdbcType="VARCHAR" />
+    <result column="yys_service_score" property="yysServiceScore" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yys_id, contract_id, yys_salary, yys_customer_evaluation, yys_service_score
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="scu.edu.cn.dao.entity.YysEvaluationKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from yys_evaluation
+    where yys_id = #{yysId,jdbcType=INTEGER}
+      and contract_id = #{contractId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="scu.edu.cn.dao.entity.YysEvaluationKey" >
+    delete from yys_evaluation
+    where yys_id = #{yysId,jdbcType=INTEGER}
+      and contract_id = #{contractId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.YysEvaluation" >
+    insert into yys_evaluation (yys_id, contract_id, yys_salary, 
+      yys_customer_evaluation, yys_service_score)
+    values (#{yysId,jdbcType=INTEGER}, #{contractId,jdbcType=INTEGER}, #{yysSalary,jdbcType=DOUBLE}, 
+      #{yysCustomerEvaluation,jdbcType=VARCHAR}, #{yysServiceScore,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.YysEvaluation" >
+    insert into yys_evaluation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yysId != null" >
+        yys_id,
+      </if>
+      <if test="contractId != null" >
+        contract_id,
+      </if>
+      <if test="yysSalary != null" >
+        yys_salary,
+      </if>
+      <if test="yysCustomerEvaluation != null" >
+        yys_customer_evaluation,
+      </if>
+      <if test="yysServiceScore != null" >
+        yys_service_score,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yysId != null" >
+        #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="contractId != null" >
+        #{contractId,jdbcType=INTEGER},
+      </if>
+      <if test="yysSalary != null" >
+        #{yysSalary,jdbcType=DOUBLE},
+      </if>
+      <if test="yysCustomerEvaluation != null" >
+        #{yysCustomerEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysServiceScore != null" >
+        #{yysServiceScore,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.YysEvaluation" >
+    update yys_evaluation
+    <set >
+      <if test="yysSalary != null" >
+        yys_salary = #{yysSalary,jdbcType=DOUBLE},
+      </if>
+      <if test="yysCustomerEvaluation != null" >
+        yys_customer_evaluation = #{yysCustomerEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysServiceScore != null" >
+        yys_service_score = #{yysServiceScore,jdbcType=INTEGER},
+      </if>
+    </set>
+    where yys_id = #{yysId,jdbcType=INTEGER}
+      and contract_id = #{contractId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.YysEvaluation" >
+    update yys_evaluation
+    set yys_salary = #{yysSalary,jdbcType=DOUBLE},
+      yys_customer_evaluation = #{yysCustomerEvaluation,jdbcType=VARCHAR},
+      yys_service_score = #{yysServiceScore,jdbcType=INTEGER}
+    where yys_id = #{yysId,jdbcType=INTEGER}
+      and contract_id = #{contractId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAllYysEvaluation" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from yys_evaluation
+  </select>
+</mapper>

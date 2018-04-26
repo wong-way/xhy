@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/editCustomer.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:19:47 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - 文章页面</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/xhy/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="/xhy/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/xhy/css/plugins/simditor/simditor.css"/>
+    <link href="/xhy/css/animate.min.css" rel="stylesheet">
+    <link href="/xhy/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="/xhy/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="/xhy/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content  animated fadeInRight article">
+
+    <div class="row">
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h3>客户信息填写
+                        <small>输入客户信息</small>
+                    </h3>
+                </div>
+                <div class="ibox-content">
+                    <form id="customerForm" class="form-horizontal">
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">姓名</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="张三" class="form-control" name="customerName"
+                                       id="customerName">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">联系方式</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" data-mask="999-9999-9999"
+                                       placeholder="189-1001-1001" name="customerPhone" id="customerPhone">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group" id="datepicker1">
+
+                            <label class="col-sm-1 control-label">预产期</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="2018-03-12"
+                                       name="customerExpectedDate" id="customerExpectedDate">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group" id="datepicker">
+
+                            <label class="col-sm-1 control-label">需求日期</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" placeholder="2018-01-12"
+                                       name="customerDemandDate" id="customerDemandDate">
+
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+
+
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">需求内容</label>
+                            <div class="col-sm-10">
+                                <textarea id="editor" placeholder="这里输入内容" autofocus
+                                          name="customerDemandService"></textarea>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">地址</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="成都市金牛区" class="form-control" name="customerAddress"
+                                       id="customerAddress">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">对接员工</label>
+
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="1001" class="form-control" name="staffId" id="staffId">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <label class="col-sm-1 control-label">服务育婴师</label>
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="1001" class="form-control" name="yysId" id="yysId">
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-1">
+                                <a class="btn btn-primary" id="addCostomer">保存内容</a>
+                                <button class="btn btn-white" type="reset">重置</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="/xhy/js/jquery.min.js?v=2.1.4"></script>
+<script src="/xhy/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/xhy/js/content.min.js?v=1.0.0"></script>
+<script type="text/javascript" src="/xhy/js/plugins/simditor/module.js"></script>
+<script type="text/javascript" src="/xhy/js/plugins/simditor/uploader.js"></script>
+<script type="text/javascript" src="/xhy/js/plugins/simditor/hotkeys.js"></script>
+<script type="text/javascript" src="/xhy/js/plugins/simditor/simditor.js"></script>
+<script src="/xhy/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+<script src="/xhy/js/jquery.serializejson.min.js"></script>
+<script src="/xhy/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="/xhy/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script>
+    function changeDate(value) {
+        var dateVal = value + "";
+        if (value != null) {
+            var date = new Date(parseInt(dateVal.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate ;
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        var editor = new Simditor({textarea: $("#editor"), defaultImage: "img/a9.jpg"})
+        $.ajax({
+            url: "/xhy/api/getCustomer",
+            type: "get",
+            success: function (data) {
+                if (data != null) {
+                    $("#customerId").val(data.customerId)
+                    $("#customerName").val(data.customerName)
+                    $("#customerPhone").val(data.customerPhone)
+                    $("#customerExpectedDate").val(changeDate(data.customerExpectedDate))
+                    $("#customerDemandDate").val(changeDate(data.customerDemandDate))
+                    editor.setValue(data.customerDemandService)
+                    $("#customerAddress").val(data.customerAddress)
+                    $("#staffId").val(data.staffId)
+                    $("#yysId").val(data.yysId)
+                }
+            }
+        })
+    })
+</script>
+
+
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script>
+    $("#datepicker input").datepicker({})
+    $("#datepicker1 input").datepicker({})
+</script>
+<script>
+    $('#addCostomer').click(
+        function () {
+            console.log($('#customerForm').serializeJSON())
+            $.ajax({
+                url: "/xhy/api/editCustomer",
+                type: "post",
+                data: JSON.stringify($('#customerForm').serializeJSON()),
+                contentType: 'application/json;charset=utf-8',
+                success: function (data) {
+                    if (data.code == 4) {
+                        swal({title: "添加成功！", text: "您已经向数据库中插入了一条消息。", type: "success"}, function (ok) {
+                            if (ok) {
+                                location.href = "/xhy/customerList"
+                            }
+                        });
+                    } else {
+                        swal({title: "添加失败！", text: "添加失败请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.href = "/xhy/customerList"
+                            }
+                        });
+                    }
+                },
+                error: function (data) {
+                    swal({title: "添加失败！", text: "添加失败请稍后重试。", type: "error"}, function (ok) {
+                        if (ok) {
+                            location.href = "/xhy/customerList"
+                        }
+                    });
+                }
+
+            });
+
+        })
+</script>
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/editCustomer.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:19:47 GMT -->
+</html>

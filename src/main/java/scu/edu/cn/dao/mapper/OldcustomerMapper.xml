@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.OldcustomerMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.Oldcustomer" >
+    <id column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="contract_time" property="contractTime" jdbcType="DATE" />
+    <result column="required_requirements" property="requiredRequirements" jdbcType="VARCHAR" />
+    <result column="baby_basic_information" property="babyBasicInformation" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    customer_id, contract_time, required_requirements, baby_basic_information
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oldcustomer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oldcustomer
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.Oldcustomer" >
+    insert into oldcustomer (customer_id, contract_time, required_requirements, 
+      baby_basic_information)
+    values (#{customerId,jdbcType=INTEGER}, #{contractTime,jdbcType=DATE}, #{requiredRequirements,jdbcType=VARCHAR}, 
+      #{babyBasicInformation,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.Oldcustomer" >
+    insert into oldcustomer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="contractTime != null" >
+        contract_time,
+      </if>
+      <if test="requiredRequirements != null" >
+        required_requirements,
+      </if>
+      <if test="babyBasicInformation != null" >
+        baby_basic_information,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="contractTime != null" >
+        #{contractTime,jdbcType=DATE},
+      </if>
+      <if test="requiredRequirements != null" >
+        #{requiredRequirements,jdbcType=VARCHAR},
+      </if>
+      <if test="babyBasicInformation != null" >
+        #{babyBasicInformation,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.Oldcustomer" >
+    update oldcustomer
+    <set >
+      <if test="contractTime != null" >
+        contract_time = #{contractTime,jdbcType=DATE},
+      </if>
+      <if test="requiredRequirements != null" >
+        required_requirements = #{requiredRequirements,jdbcType=VARCHAR},
+      </if>
+      <if test="babyBasicInformation != null" >
+        baby_basic_information = #{babyBasicInformation,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.Oldcustomer" >
+    update oldcustomer
+    set contract_time = #{contractTime,jdbcType=DATE},
+      required_requirements = #{requiredRequirements,jdbcType=VARCHAR},
+      baby_basic_information = #{babyBasicInformation,jdbcType=VARCHAR}
+    where customer_id = #{customerId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllOldCustomer" resultMap="BaseResultMap">
+    SELECT
+    customer_id,contract_time,required_requirements,baby_basic_information
+    FROM OldCustomer
+  </select>
+</mapper>

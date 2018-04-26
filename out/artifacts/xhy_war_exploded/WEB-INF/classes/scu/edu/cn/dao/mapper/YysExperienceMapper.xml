@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.YysExperienceMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.YysExperience" >
+    <id column="yys_experience_id" property="yysExperienceId" jdbcType="INTEGER" />
+    <result column="yys_work_time" property="yysWorkTime" jdbcType="VARCHAR" />
+    <result column="yys_customer_evaluation" property="yysCustomerEvaluation" jdbcType="VARCHAR" />
+    <result column="yys_id" property="yysId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="scu.edu.cn.dao.entity.YysExperience" extends="BaseResultMap" >
+    <result column="yys_work_content" property="yysWorkContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    yys_experience_id, yys_work_time, yys_customer_evaluation, yys_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    yys_work_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from yys_experience
+    where yys_experience_id = #{yysExperienceId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from yys_experience
+    where yys_experience_id = #{yysExperienceId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.YysExperience" >
+    insert into yys_experience (yys_experience_id, yys_work_time, yys_customer_evaluation, 
+      yys_id, yys_work_content)
+    values (#{yysExperienceId,jdbcType=INTEGER}, #{yysWorkTime,jdbcType=VARCHAR}, #{yysCustomerEvaluation,jdbcType=VARCHAR}, 
+      #{yysId,jdbcType=INTEGER}, #{yysWorkContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.YysExperience" >
+    insert into yys_experience
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="yysExperienceId != null" >
+        yys_experience_id,
+      </if>
+      <if test="yysWorkTime != null" >
+        yys_work_time,
+      </if>
+      <if test="yysCustomerEvaluation != null" >
+        yys_customer_evaluation,
+      </if>
+      <if test="yysId != null" >
+        yys_id,
+      </if>
+      <if test="yysWorkContent != null" >
+        yys_work_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="yysExperienceId != null" >
+        #{yysExperienceId,jdbcType=INTEGER},
+      </if>
+      <if test="yysWorkTime != null" >
+        #{yysWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="yysCustomerEvaluation != null" >
+        #{yysCustomerEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysId != null" >
+        #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="yysWorkContent != null" >
+        #{yysWorkContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.YysExperience" >
+    update yys_experience
+    <set >
+      <if test="yysWorkTime != null" >
+        yys_work_time = #{yysWorkTime,jdbcType=VARCHAR},
+      </if>
+      <if test="yysCustomerEvaluation != null" >
+        yys_customer_evaluation = #{yysCustomerEvaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="yysId != null" >
+        yys_id = #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="yysWorkContent != null" >
+        yys_work_content = #{yysWorkContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where yys_experience_id = #{yysExperienceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="scu.edu.cn.dao.entity.YysExperience" >
+    update yys_experience
+    set yys_work_time = #{yysWorkTime,jdbcType=VARCHAR},
+      yys_customer_evaluation = #{yysCustomerEvaluation,jdbcType=VARCHAR},
+      yys_id = #{yysId,jdbcType=INTEGER},
+      yys_work_content = #{yysWorkContent,jdbcType=LONGVARCHAR}
+    where yys_experience_id = #{yysExperienceId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.YysExperience" >
+    update yys_experience
+    set yys_work_time = #{yysWorkTime,jdbcType=VARCHAR},
+      yys_customer_evaluation = #{yysCustomerEvaluation,jdbcType=VARCHAR},
+      yys_id = #{yysId,jdbcType=INTEGER}
+    where yys_experience_id = #{yysExperienceId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectAllYysExperience" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from yys_experience
+  </select>
+</mapper>

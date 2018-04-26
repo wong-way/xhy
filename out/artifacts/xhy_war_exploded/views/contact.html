@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>新华亿母婴公司</title>
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/xhy/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/xhy/css/plugins/simditor/simditor.css"/>
+    <link href="/xhy/css/animate.min.css" rel="stylesheet">
+    <link href="/xhy/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="/xhy/css/plugins/jasny/jasny-bootstrap.min.css" rel="stylesheet">
+    <link href="/xhy/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!-- Bootstrap core CSS -->
+    <link href="/xhy/css/bootstrap4.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/xhy/css/modern-business.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="/xhy/main">新华亿母婴</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">关于我们</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="services.html">服务</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/xhy/main/contact">联系我们</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">个人中心</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link " href="#" >                        登录 </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">加入我们
+
+    </h1>
+
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="index.html">首页</a>
+        </li>
+        <li class="breadcrumb-item active">加入我们</li>
+    </ol>
+
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Map Column -->
+        <div class="col-lg-8 mb-4">
+            <!-- Embedded Google Map -->
+
+            <iframe width="640" height="360" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="/xhy/img/2.mp4"></iframe>
+        </div>
+        <!-- Contact Details Column -->
+        <div class="col-lg-4 mb-4">
+            <h3>联系消息详情</h3>
+            <p>
+                成都市双流县
+                <br>川大路二段101号
+                <br>
+            </p>
+            <p>
+                <abbr title="Phone">电话</abbr>: (123) 456-7890
+            </p>
+            <p>
+                <abbr title="Email">邮箱</abbr>:
+                <a href="mailto:name@example.com">xhy@xhy.com
+                </a>
+            </p>
+            <p>
+                <abbr title="Hours">时间</abbr>: 周一 - 周五: 9:00 AM to 5:00 PM
+            </p>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Contact Form -->
+    <div class="row">
+        <div class="col-lg-8 mb-4">
+            <h3>Send us a Message</h3>
+            <form id="contactForm">
+                <div class="control-group form-group">
+
+                    <label class="control-label">姓名</label>
+                    <input type="text" placeholder="张三" class="form-control" name="customerName">
+
+                </div>
+                <div class="control-group form-group">
+                    <label class="control-label">联系方式</label>
+
+                    <input type="text" class="form-control" data-mask="999-9999-9999"
+                           placeholder="189-1001-1001" name="customerPhone">
+                </div>
+                <div class="control-group form-group" id="datepicker1">
+                    <label class=" control-label">预产期</label>
+                    <input type="text" class="form-control" placeholder="2018-03-12"
+                           name="customerExpectedDate">
+                </div>
+                <div class="control-group form-group" id="datepicker">
+                    <label class=" control-label">需求日期</label>
+                    <input type="text" class="form-control" placeholder="2018-01-12"
+                           name="customerDemandDate">
+                </div>
+                <div class="control-group form-group">
+                    <label class="control-label">需求内容</label>
+                    <textarea id="editor" placeholder="这里输入内容" autofocus
+                              name="customerDemandService"></textarea>
+                </div>
+                <div class="control-group form-group">
+                    <label class="control-label">地址</label>
+                    <input type="text" placeholder="成都市金牛区" class="form-control" name="customerAddress">
+                </div>
+                <div class="control-group form-group">
+                    <a class="btn  btn-info" id="addCostomer">保存内容</a>
+                    <button class="btn btn-secondary " type="reset">重置</button>
+                </div>
+            </form>
+        </div>
+        <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+        <!-- /.row -->
+    </div>
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; 新华亿母婴 2018</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<!-- Bootstrap core JavaScript -->
+<script src="/xhy/js/jquery.min.js"></script>
+<script src="/xhy/js/bootstrap.bundle.min.js"></script>
+<script src="/xhy/js/bootstrap.min.js?v=3.3.6"></script>
+
+<!-- Contact form JavaScript -->
+<!-- Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+<script src="/xhy/js/jqBootstrapValidation.js"></script>
+<script src="/xhy/js/contact_me.js"></script>
+<script type="text/javascript" src="/xhy/js/plugins/simditor/module.js"></script>
+<script type="text/javascript" src="/xhy/js/plugins/simditor/uploader.js"></script>
+<script type="text/javascript" src="/xhy/js/plugins/simditor/hotkeys.js"></script>
+<script type="text/javascript" src="/xhy/js/plugins/simditor/simditor.js"></script>
+<script src="/xhy/js/plugins/jasny/jasny-bootstrap.min.js"></script>
+<script src="/xhy/js/jquery.serializejson.min.js"></script>
+<script src="/xhy/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+<script src="/xhy/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var editor = new Simditor({textarea: $("#editor"), defaultImage: "img/a9.jpg"})
+    });
+</script>
+<script>
+    $("#datepicker input").datepicker({})
+    $("#datepicker1 input").datepicker({})
+</script>
+<script>
+    $('#addCostomer').click(
+        function () {
+            $.ajax({
+                url: "/xhy/api/insertCustomer",
+                type: "post",
+                data:  JSON.stringify($('#contactForm').serializeJSON()),
+                contentType: 'application/json;charset=utf-8',
+                success: function (data) {
+                    if(data.code == 4){
+                        swal({title: "添加成功！", text: "您已经向数据库中插入了一条消息。", type: "success"}, function (ok) {
+                            if (ok) {
+                                location.href="/xhy/main"
+                            }
+                        });
+                    }else{
+                        swal({title: "添加失败！", text: "添加失败请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.href="/xhy/main"
+
+                            }
+                        });
+                    }
+                },
+                error:function (data) {
+                    swal({title: "添加失败！", text: "添加失败请稍后重试。", type: "error"}, function (ok) {
+                        if (ok) {
+                            location.href="/xhy/main"
+                        }
+                    });
+                }
+
+            });
+
+        })
+</script>
+</body>
+
+</html>

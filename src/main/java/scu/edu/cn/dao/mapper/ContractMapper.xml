@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.ContractMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.Contract" >
+    <id column="contract_id" property="contractId" jdbcType="INTEGER" />
+    <result column="contract_collection_time" property="contractCollectionTime" jdbcType="DATE" />
+    <result column="contract_amount" property="contractAmount" jdbcType="DOUBLE" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="scu.edu.cn.dao.entity.Contract" extends="BaseResultMap" >
+    <result column="contract_service_content" property="contractServiceContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    contract_id, contract_collection_time, contract_amount, customer_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    contract_service_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from contract
+    where contract_id = #{contractId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from contract
+    where contract_id = #{contractId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.Contract" >
+    insert into contract (contract_id, contract_collection_time,
+      contract_amount, customer_id, contract_service_content
+      )
+    values (#{contractId,jdbcType=INTEGER}, #{contractCollectionTime,jdbcType=DATE},
+      #{contractAmount,jdbcType=DOUBLE}, #{customerId,jdbcType=INTEGER}, #{contractServiceContent,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.Contract" >
+    insert into contract
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="contractId != null" >
+        contract_id,
+      </if>
+      <if test="contractCollectionTime != null" >
+        contract_collection_time,
+      </if>
+      <if test="contractAmount != null" >
+        contract_amount,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="contractServiceContent != null" >
+        contract_service_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="contractId != null" >
+        #{contractId,jdbcType=INTEGER},
+      </if>
+      <if test="contractCollectionTime != null" >
+        #{contractCollectionTime,jdbcType=DATE},
+      </if>
+      <if test="contractAmount != null" >
+        #{contractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="contractServiceContent != null" >
+        #{contractServiceContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.Contract" >
+    update contract
+    <set >
+      <if test="contractCollectionTime != null" >
+        contract_collection_time = #{contractCollectionTime,jdbcType=DATE},
+      </if>
+      <if test="contractAmount != null" >
+        contract_amount = #{contractAmount,jdbcType=DOUBLE},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="contractServiceContent != null" >
+        contract_service_content = #{contractServiceContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where contract_id = #{contractId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="scu.edu.cn.dao.entity.Contract" >
+    update contract
+    set contract_collection_time = #{contractCollectionTime,jdbcType=DATE},
+      contract_amount = #{contractAmount,jdbcType=DOUBLE},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      contract_service_content = #{contractServiceContent,jdbcType=LONGVARCHAR}
+    where contract_id = #{contractId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.Contract" >
+    update contract
+    set contract_collection_time = #{contractCollectionTime,jdbcType=DATE},
+      contract_amount = #{contractAmount,jdbcType=DOUBLE},
+      customer_id = #{customerId,jdbcType=INTEGER}
+    where contract_id = #{contractId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from contract
+  </select>
+    <select id="selectRecent" resultMap="ResultMapWithBLOBs"  >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from contract
+    where DATE_SUB(CURDATE(), INTERVAL 1 MONTH) &lt; contract_collection_time;
+  </select>
+    <select id="getEachDayDetail" resultType="scu.edu.cn.dto.DetailContract">
+        SELECT
+        contract_collection_time as date,
+        count(*) as amount
+        FROM contract
+        GROUP BY (contract_collection_time)
+        order by contract_collection_time desc
+    </select>
+</mapper>

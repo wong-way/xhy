@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.ReceptionSituationMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.ReceptionSituation" >
+    <id column="reception_id" property="receptionId" jdbcType="INTEGER" />
+    <result column="customer_name" property="customerName" jdbcType="VARCHAR" />
+    <result column="customer_contact" property="customerContact" jdbcType="VARCHAR" />
+    <result column="customer_address" property="customerAddress" jdbcType="VARCHAR" />
+    <result column="required_requirements" property="requiredRequirements" jdbcType="VARCHAR" />
+    <result column="required_time" property="requiredTime" jdbcType="DATE" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="staff_id" property="staffId" jdbcType="INTEGER" />
+    <result column="mode" property="mode" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    reception_id, customer_name, customer_contact, customer_address, required_requirements, 
+    required_time, content, staff_id, mode
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from reception_situation
+    where reception_id = #{receptionId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from reception_situation
+    where reception_id = #{receptionId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.ReceptionSituation" >
+    insert into reception_situation (reception_id, customer_name, customer_contact, 
+      customer_address, required_requirements, 
+      required_time, content, staff_id, 
+      mode)
+    values (#{receptionId,jdbcType=INTEGER}, #{customerName,jdbcType=VARCHAR}, #{customerContact,jdbcType=VARCHAR}, 
+      #{customerAddress,jdbcType=VARCHAR}, #{requiredRequirements,jdbcType=VARCHAR}, 
+      #{requiredTime,jdbcType=DATE}, #{content,jdbcType=VARCHAR}, #{staffId,jdbcType=INTEGER}, 
+      #{mode,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.ReceptionSituation" >
+    insert into reception_situation
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="receptionId != null" >
+        reception_id,
+      </if>
+      <if test="customerName != null" >
+        customer_name,
+      </if>
+      <if test="customerContact != null" >
+        customer_contact,
+      </if>
+      <if test="customerAddress != null" >
+        customer_address,
+      </if>
+      <if test="requiredRequirements != null" >
+        required_requirements,
+      </if>
+      <if test="requiredTime != null" >
+        required_time,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="mode != null" >
+        mode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="receptionId != null" >
+        #{receptionId,jdbcType=INTEGER},
+      </if>
+      <if test="customerName != null" >
+        #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerContact != null" >
+        #{customerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null" >
+        #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="requiredRequirements != null" >
+        #{requiredRequirements,jdbcType=VARCHAR},
+      </if>
+      <if test="requiredTime != null" >
+        #{requiredTime,jdbcType=DATE},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null" >
+        #{mode,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.ReceptionSituation" >
+    update reception_situation
+    <set >
+      <if test="customerName != null" >
+        customer_name = #{customerName,jdbcType=VARCHAR},
+      </if>
+      <if test="customerContact != null" >
+        customer_contact = #{customerContact,jdbcType=VARCHAR},
+      </if>
+      <if test="customerAddress != null" >
+        customer_address = #{customerAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="requiredRequirements != null" >
+        required_requirements = #{requiredRequirements,jdbcType=VARCHAR},
+      </if>
+      <if test="requiredTime != null" >
+        required_time = #{requiredTime,jdbcType=DATE},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="mode != null" >
+        mode = #{mode,jdbcType=INTEGER},
+      </if>
+    </set>
+    where reception_id = #{receptionId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.ReceptionSituation" >
+    update reception_situation
+    set customer_name = #{customerName,jdbcType=VARCHAR},
+      customer_contact = #{customerContact,jdbcType=VARCHAR},
+      customer_address = #{customerAddress,jdbcType=VARCHAR},
+      required_requirements = #{requiredRequirements,jdbcType=VARCHAR},
+      required_time = #{requiredTime,jdbcType=DATE},
+      content = #{content,jdbcType=VARCHAR},
+      staff_id = #{staffId,jdbcType=INTEGER},
+      mode = #{mode,jdbcType=INTEGER}
+    where reception_id = #{receptionId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllReceptionSituation" resultMap="BaseResultMap">
+    SELECT
+    reception_id,customer_name,customer_contact,customer_address,required_requirements,required_time,content,staff_id,mode
+    FROM reception_situation
+  </select>
+</mapper>

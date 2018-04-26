@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:03 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>新华亿母婴管理系统</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/xhy/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="/xhy/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/xhy/css/animate.min.css" rel="stylesheet">
+    <link href="/xhy/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+
+        <div class="ibox-content">
+            <div class="row row-lg">
+
+                <div class="col-sm-12">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+
+                        <div class="example">
+
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <a type="button" class="btn btn-outline btn-default J_menuItem"
+                                   href="/xhy/editCustomer">
+                                    <i class="glyphicon glyphicon-plus " aria-hidden="true">
+
+                                    </i>
+
+                                </a>
+
+                                <button type="button" class="btn btn-outline btn-default" id="editCustomer">
+                                    <i class="glyphicon  glyphicon-edit" aria-hidden="true"></i>
+                                </button>
+                                <!--<button type="button" class="btn btn-outline btn-default" id="deleteCustomer">-->
+                                <!--<i class="glyphicon glyphicon-trash" aria-hidden="true"></i>-->
+                                <!--</button>-->
+                                <button type="button" class="btn btn-outline btn-default" id="deleteCustomers">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                            <table id="exampleTableEvents" data-height="800" data-mobile-responsive="true">
+                                <thead>
+                                <tr>
+                                    <th class="text-center" data-checkbox="true" data-field="state"></th>
+                                    <th class="text-center" data-field="customerId">顾客id</th>
+                                    <th class="text-center" data-field="customerName">顾客姓名</th>
+                                    <th class="text-center" data-field="customerPhone">联系方式</th>
+                                    <th class="text-center" data-field="customerExpectedDate"
+                                        data-formatter="changeDate">预产期
+                                    </th>
+                                    <th class="text-center" data-field="customerDemandDate" data-formatter="changeDate">
+                                        需求日期
+                                    </th>
+                                    <th class="text-center" data-field="customerDemandService">需求服务</th>
+                                    <th class="text-center" data-field="customerAddress">顾客地址</th>
+                                    <th class="text-center" data-field="staffId">对接员工</th>
+                                    <th class="text-center" data-field="yysId">服务育婴师</th>
+                                    <th class="text-center" data-formatter="change">操作</th>
+                                </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- End Panel Other -->
+</div>
+<script src="/xhy/js/jquery.min.js?v=2.1.4"></script>
+<script src="/xhy/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/xhy/js/content.min.js?v=1.0.0"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/xhy/js/tableExport.js"></script>
+<script src="/xhy/js/bootstrap-table-export.js"></script>
+<script src="/xhy/js/demo/customerList.js"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="/xhy/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/xhy/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="/xhy/js/demo/user-validate.js"></script>
+
+<script>
+    $('#deleteCustomer').click(function () {
+            var table = $('#exampleTableEvents')
+            var userList = table.bootstrapTable('getSelections')
+            var user = userList[0];
+
+            if (user == null) {
+                swal("提示！", "请选择一行信息。", "error")
+                return
+            }
+            var customerId = user.customerId
+            swal({
+                title: "您确定要删除这条信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，我要删除！",
+                cancelButtonText: "让我再考虑一下…",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                        url: "api/deleteCustomer",
+                        type: "post",
+                        data: {customerId: customerId},
+
+                        success: function (data) {
+                            console.log(data)
+                            if (data.code == 4) {
+                                swal("删除成功！", "您已经永久删除了这条信息。", "success")
+                            }
+                            else
+                                swal("删除失败！", "请稍后重试。", "error");
+                        },
+                        error: function (data) {
+                            swal("删除失败！", "请稍后重试。", "error");
+                        }
+                    }
+                )
+                table.bootstrapTable('remove', {filed: 'customerId', value: customerId})
+                table.bootstrapTable('refresh');
+
+
+            })
+
+        }
+    );
+
+
+</script>
+<script>
+    $('#deleteCustomers').click(function () {
+            var table = $('#exampleTableEvents')
+            var itemList = table.bootstrapTable('getSelections')
+
+
+            if (itemList.length == 0) {
+                swal("提示！", "请选择一行信息。", "error")
+                return
+            }
+            alert(JSON.stringify(itemList))
+
+            swal({
+                title: "您确定要删除这些信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，我要删除！",
+                cancelButtonText: "让我再考虑一下…",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                        url: "api/deleteCustomers",
+                        type: "post",
+                        data: JSON.stringify(itemList),
+                        contentType: "application/json",
+                        success: function (data) {
+                            console.log(data)
+                            if (data.code = 4) {
+                                swal({title: "操作成功！", text: "您已经成功删除了一条记录。", type: "success"}, function (ok) {
+                                    if (ok) {
+                                        location.reload();
+                                    }
+                                })
+                            }
+                            else
+                                swal({title: "操作失败！", text: "删除失败请稍后重试。", type: "success"}, function (ok) {
+                                    if (ok) {
+                                        location.reload();
+                                    }
+                                })
+                        },
+                        error: function (data) {
+                            swal({title: "操作失败！", text: "删除失败请稍后重试。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        }
+                    }
+                )
+
+
+            })
+
+        }
+    );
+
+
+</script>
+
+<script>
+    $('#editCustomer').click(function () {
+        var table = $('#exampleTableEvents')
+        var itemList = table.bootstrapTable('getSelections')
+        var item = itemList[0];
+        if (item == null) {
+            swal("提示！", "请选择一行信息。", "error")
+            return
+        }
+
+        location.href = "/xhy/updateCustomer/" + item.customerId
+    })
+
+
+</script>
+<script>
+    function changeDate(value) {
+        var dateVal = value + "";
+        if (value != null) {
+            var date = new Date(parseInt(dateVal.replace("/Date(", "").replace(")/", ""), 10));
+            var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+            var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+            return date.getFullYear() + "-" + month + "-" + currentDate ;
+        }
+    }
+
+</script>
+<script>
+    function change(value) {
+        return "<button class=\"btn btn-info \" type=\"button\"><i class=\"fa fa-paste\"></i> 编辑</button>"
+    }
+    $('#exampleTableEvents').on( 'click-cell.bs.table', function (field, row, value,$element) {
+        if(row==10){
+            location.href = "/xhy/updateCustomer/" + $element.customerId
+        }
+    } )
+
+</script>
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:06 GMT -->
+</html>

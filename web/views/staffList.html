@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:03 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - Bootstrap Table</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/xhy/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="/xhy/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/xhy/css/animate.min.css" rel="stylesheet">
+    <link href="/xhy/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <!-- Panel Other -->
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>员工基本信息表</h5>
+
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+
+                <div class="col-sm-12">
+                    <!-- Example Events -->
+                    <div class="example-wrap">
+
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button type="button" class="btn btn-outline btn-default"
+                                        data-toggle="modal" data-target="#addModel">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-outline btn-default" id="editStaff"
+                                >
+                                    <i class="glyphicon  glyphicon-edit" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline btn-default" id="deleteStaff">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+
+                            <table id="exampleTableEvents" data-height="550" data-mobile-responsive="true">
+                                <thead>
+                                <tr>
+                                    <th data-checkbox="true" data-field="state"></th>
+                                    <th data-field="staffId">员工Id</th>
+                                    <th data-field="staffAge">年龄</th>
+                                    <th data-field="staffName">姓名</th>
+                                    <th data-field="staffPosition">职位</th>
+                                    <th data-field="staffConstellation">星座</th>
+                                    <th data-field="staffEducation">学历</th>
+                                    <th data-field="staffCertificates">所有证书状况</th>
+                                    <th class="text-center" data-field="staffDutyOn" data-formatter="changeStatus">在职状态</th>
+                                    <th class="text-center" data-field="staffMarriage" data-formatter="changeStatus1">婚姻状况</th>
+                                </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+
+
+                    </div>
+                    <!-- End Example Events -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>添加员工</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">员工Id：</label>
+                            <div class="col-sm-8">
+                                <input id="staffId" name="staffId" class="form-control error" type="text"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">年龄：</label>
+                            <div class="col-sm-8">
+                                <input id="staffAge" name="staffAge" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">姓名：</label>
+                            <div class="col-sm-8">
+                                <input id="staffName" name="staffName" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">职位：</label>
+                            <div class="col-sm-8">
+                                <input id="staffPosition" name="staffPosition" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">星座：</label>
+                            <div class="col-sm-8">
+                                <input id="staffConstellation" name="staffConstellation" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学历：</label>
+                            <div class="col-sm-8">
+                                <input id="staffEducation" name="staffEducation" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">所有证书状况：</label>
+                            <div class="col-sm-8">
+                                <input id="staffCertificates" name="staffCertificates" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">在职状态：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="staffDutyOn">
+                                    <option>在职</option>
+                                    <option>未在职</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">婚姻状况：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="staffMarriage">
+                                    <option>已婚</option>
+                                    <option>未婚</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="checkbox" id="agree" name="agree">
+                                        我已经认真阅读并同意《H+使用协议》
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="addStaff">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="editModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5>编辑员工</h5>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal m-t" id="infoForm1">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">员工Id：</label>
+                            <div class="col-sm-8">
+                                <input id="staffId1" name="staffId" class="form-control error" type="text"
+                                       aria-required="true" aria-invalid="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">年龄：</label>
+                            <div class="col-sm-8">
+                                <input id="staffAge1" name="staffAge" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">姓名：</label>
+                            <div class="col-sm-8">
+                                <input id="staffName1" name="staffName" class="form-control" type="text">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">职位：</label>
+                            <div class="col-sm-8">
+                                <input id="staffPosition1" name="staffPosition" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">星座：</label>
+                            <div class="col-sm-8">
+                                <input id="staffConstellation1" name="staffConstellation" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">学历：</label>
+                            <div class="col-sm-8">
+                                <input id="staffEducation1" name="staffEducation" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">所有证书状况：</label>
+                            <div class="col-sm-8">
+                                <input id="staffCertificates1" name="staffCertificates" class="form-control" type="text">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">在职状态：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="staffDutyOn1">
+                                    <option>在职</option>
+                                    <option>未在职</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">婚姻状况：</label>
+                            <div class="col-sm-8">
+                                <select class="form-control" id="staffMarriage1">
+                                    <option>已婚</option>
+                                    <option>未婚</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" class="checkbox" id="agree1" name="agree">
+                                        我已经认真阅读并同意《H+使用协议》
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <a class="btn btn-primary" id="updateStaff">提交</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- End Panel Other -->
+</div>
+<script src="/xhy/js/jquery.min.js?v=2.1.4"></script>
+<script src="/xhy/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/xhy/js/content.min.js?v=1.0.0"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/xhy/js/tableExport.js"></script>
+<script src="/xhy/js/bootstrap-table-export.js"></script>
+<script src="/xhy/js/demo/bootstrap-table-demo-staff.min.js"></script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+<script src="/xhy/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/xhy/js/plugins/validate/jquery.validate.min.js"></script>
+<script src="/xhy/js/demo/user-validate.js"></script>
+<script>
+function changeStatus(value) {
+if (value)
+return "在职"
+else
+return "未在职"}
+    </script>
+<script>
+function changeStatus1(value) {
+if (value)
+return "已婚"
+else
+return "未婚"}
+    </script>
+
+
+
+<script>
+    $('#deleteStaff').click(function () {
+            var table = $('#exampleTableEvents')
+            var staffList = table.bootstrapTable('getSelections')
+            staff = staffList[0];
+            if (staff == null) {
+                swal("提示！", "请选择一行信息。", "error")
+                return
+            }
+            swal({
+                title: "您确定要删除这条信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，我要删除！",
+                cancelButtonText: "让我再考虑一下…",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                        url: "api/deleteStaff",
+                        type: "post",
+                        data: {
+                            staffId: staff.staffId
+                        },
+                        success: function (data) {
+                            console.log(data)
+                            if (data.code == 4) {
+                                swal("删除成功！", "您已经永久删除了这条信息。", "success")
+                            }
+                            else
+                                swal("删除失败！", "请稍后重试。", "error");
+                        },
+                        error: function (data) {
+                            swal("删除失败！", "请稍后重试。", "error");
+                        }
+                    }
+                )
+                table.bootstrapTable('remove', {filed: 'staffId', value: staff.staffId})
+                table.bootstrapTable('refresh');
+
+
+            })
+        }
+    );
+
+
+</script>
+<script>
+
+    $('#addStaff').click(
+        function () {
+            if (!$("#infoForm").valid()) {
+                return;
+            }
+            let staffId = $('#staffId').val()
+            let staffName = $('#staffName').val()
+
+            let staffAge = $('#staffAge').val()
+            let staffPosition = $('#staffAge').val()
+            let staffConstellation = $('#staffConstellation').val()
+            let staffEducation = $('#staffEducation').val()
+            let staffCertificates = $('#staffCertificates').val()
+            let staffDutyOnTemp = $('#staffDutyOn').val()
+            let staffDutyOn
+            if (staffDutyOnTemp == "在职")
+                staffDutyOn = true
+            else
+                staffDutyOn = false
+            let staffMarriageTemp = $('#staffMarriage').val()
+            let staffMarriage
+            if (staffMarriageTemp == "已婚")
+                staffMarriage = true
+            else
+                staffMarriage = false
+
+
+            $.ajax({
+                    url: "api/addStaff",
+                    type: "post",
+                    data: JSON.stringify({
+                        staffId: staffId,
+                        staffName: staffName,
+
+                        staffAge: staffAge,
+                        staffPosition:staffPosition,
+                        staffConstellation:staffConstellation,
+                        staffEducation:staffEducation,
+                        staffCertificates:staffCertificates,
+                        staffDutyOn:staffDutyOn,
+                        staffMarriage:staffMarriage
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#myModal').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "添加成功！", text: "您已经成功添加了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        } else if (data.code == 6) {
+                            swal({title: "添加失败！", text: "用户名已存在。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                        else
+                            swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                    },
+                    error: function (data) {
+                        $('#myModal').modal('toggle')
+                        console.log(data)
+                        swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+<script>
+    $('#editStaff').click(function () {
+        var table = $('#exampleTableEvents')
+        var staffList = table.bootstrapTable('getSelections')
+        var staff = staffList[0];
+        if (staff == null) {
+            swal("提示！", "请选择一行信息。", "error")
+            return
+        }
+        $('#staffId1').val(staff.staffId)
+//        data-toggle="modal" data-target="#editModel"
+        $('#editModel').modal('toggle');
+    })
+
+    $('#updateStaff').click(
+        function () {
+            if (!$("#infoForm1").valid()) {
+                return;
+            }
+
+            let staffId = $('#staffId1').val()
+            let staffName = $('#staffName1').val()
+
+            let staffAge = $('#staffAge1').val()
+            let staffPosition = $('#staffAge1').val()
+            let staffConstellation = $('#staffConstellation1').val()
+            let staffEducation = $('#staffEducation1').val()
+            let staffCertificates = $('#staffCertificates1').val()
+            let staffDutyOnTemp = $('#staffDutyOn1').val()
+            let staffDutyOn
+            if (staffDutyOnTemp == "在职")
+                staffDutyOn = true
+            else
+                staffDutyOn = false
+            let staffMarriageTemp = $('#staffMarriage1').val()
+            let staffMarriage
+            if (staffMarriageTemp == "已婚")
+                staffMarriage = true
+            else
+                staffMarriage = false
+
+            //console.log(staffId + password + admin)
+            $.ajax({
+                    url: "api/updateStaff",
+                    type: "post",
+                    data: JSON.stringify({
+                        staffId: staffId,
+                        staffName: staffName,
+
+                        staffAge: staffAge,
+                        staffPosition:staffPosition,
+                        staffConstellation:staffConstellation,
+                        staffEducation:staffEducation,
+                        staffCertificates:staffCertificates,
+                        staffDutyOn:staffDutyOn,
+                        staffMarriage:staffMarriage
+
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "更新成功！", text: "您已经成功更新了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        }
+                        else
+                            swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        $('#exampleTableEvents').bootstrapTable('refresh');
+
+                    },
+                    error: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/userList.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:06 GMT -->
+</html>

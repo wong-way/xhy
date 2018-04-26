@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/contacts.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:18:21 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>H+ 后台主题UI框架 - 联系人</title>
+    <meta name="keywords" content="H+后台主题,后台bootstrap框架,会员中心主题,后台HTML,响应式后台">
+    <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="/xhy/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="/xhy/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link href="/xhy/css/animate.min.css" rel="stylesheet">
+    <link href="/xhy/css/style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/xhy/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="/xhy/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+
+                <div class="col-sm-12">
+                <!-- Example Events -->
+                    <div class="example-wrap">
+                        <h2 class="example-title">育婴师基本信息管理</h2>
+                        <hr/>
+                        <p align="center" style="font-family: verdana;color: black;font-size: 20px">金牌育婴师推荐</p>
+                        <div class="example">
+                            <div class="btn-group hidden-xs" id="exampleTableEventsToolbar" role="group">
+                                <button type="button" class="btn btn-outline btn-default"
+                                    data-toggle="modal" data-target="#addModel">
+                                    <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                </button>
+
+                                <button type="button" class="btn btn-outline btn-default" id="editYysInfo">
+                                    <i class="glyphicon  glyphicon-edit" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline btn-default" id="deleteYysInfo">
+                                    <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+
+
+                            <div style="width: 1100px;height: 370px;">
+                                <table width="1100" border="=0" cellpadding="0" cellspacing="0" frame=void rules=none>
+                                <tr>
+                                    <td width="25%" height="340" align="center" valign="middle"><img src="/xhy/img/yys1.jpg" width="250" height="300"/></td>
+                                    <td width="25%" height="340" align="center" valign="middle"><img src="/xhy/img/yys2.jpg" width="250" height="300"/></td>
+                                    <td width="25%" height="340" align="center" valign="middle"><img src="/xhy/img/yys3.jpg" width="250" height="300"/></td>
+                                    <td width="25%" height="340" align="center" valign="middle"><img src="/xhy/img/yys4.jpg" width="250" height="300"/></td>
+                                </tr>
+                                <tr>
+                                    <td width="25%" height="20" align="center" valign="middle">姓名：王芬</td>
+                                    <td width="25%" height="20" align="center" valign="middle">姓名：李妍</td>
+                                    <td width="25%" height="20" align="center" valign="middle">姓名：赵琳</td>
+                                    <td width="25%" height="20" align="center" valign="middle">姓名：吴莉丽</td>
+                                </tr>
+                                <tr>
+                                    <td width="25%" height="20" align="center" valign="middle">编号：3</td>
+                                    <td width="25%" height="20" align="center" valign="middle">编号：8</td>
+                                    <td width="25%" height="20" align="center" valign="middle">编号：12</td>
+                                    <td width="25%" height="20" align="center" valign="middle">编号：16</td>
+                                </tr>
+                                </table>
+                             </div>
+                             <br/>
+                             <br/>
+                             <table id="exampleTableEvents" data-height="800" data-mobile-responsive="true">
+                            <thead>
+                            <tr>
+                                <th data-field="checkBox" data-checkbox="true"></th>
+                                <th data-field="yysId">编号</th>
+                                <th data-field="yysName">姓名</th>
+                                <th data-field="yysPhoto">照片</th>
+                                <th data-field="yysAge">年龄</th>
+                                <th data-field="yysConstellation">星座</th>
+                                <th data-field="yysEducation">学历</th>
+                                <th data-field="yysMarriage">婚姻状况</th>
+                                <th data-field="yysCertificate">证书</th>
+                                <th data-field="yysRecommendedReason">推荐理由</th>
+                            </tr>
+                            </thead>
+                             </table>
+                         </div>
+                      </div>
+                 </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="addModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>添加育婴师信息</h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal m-t" id="infoForm">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">编号：</label>
+                        <div class="col-sm-8">
+                            <input id="yysId" name="yysId" class="form-control error" type="number"
+                                   aria-required="true" aria-invalid="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">姓名：</label>
+                        <div class="col-sm-8">
+                            <input id="yysName" name="yysName" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">照片：</label>
+                        <div class="col-sm-8">
+                            <input id="yysPhoto" name="yysPhoto" class="form-control error" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">年龄：</label>
+                        <div class="col-sm-8">
+                            <input id="yysAge" name="yysAge" class="form-control" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">星座：</label>
+                        <div class="col-sm-8">
+                            <input id="yysConstellation" name="yysConstellation" class="form-control error" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">学历：</label>
+                        <div class="col-sm-8">
+                            <input id="yysEducation" name="yysEducation" class="form-control" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">婚姻状况：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="yysMarriage">
+                                <option>已婚</option>
+                                <option>未婚</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">证书：</label>
+                        <div class="col-sm-8">
+                            <input id="yysCertificate" name="yysCertificate" class="form-control error" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">推荐理由：</label>
+                        <div class="col-sm-8">
+                            <input id="yysRecommendedReason" name="yysRecommendedReason" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3">
+                            <a class="btn btn-primary" id="addYysInfo">提交</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editModel" role="dialog" tabindex="-1" aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>修改育婴师信息</h5>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal m-t" id="infoForm1">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">编号：</label>
+                        <div class="col-sm-8">
+                            <input id="yysId1" name="yysId" class="form-control error" type="number"
+                                   aria-required="true" aria-invalid="true">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">姓名：</label>
+                        <div class="col-sm-8">
+                            <input id="yysName1" name="yysName" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">照片：</label>
+                        <div class="col-sm-8">
+                            <input id="yysPhoto1" name="yysPhoto" class="form-control error" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">年龄：</label>
+                        <div class="col-sm-8">
+                            <input id="yysAge1" name="yysAge" class="form-control" type="number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">星座：</label>
+                        <div class="col-sm-8">
+                            <input id="yysConstellation1" name="yysConstellation" class="form-control error" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">学历：</label>
+                        <div class="col-sm-8">
+                            <input id="yysEducation1" name="yysEducation" class="form-control" type="text">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">婚姻状况：</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="yysMarriage1">
+                                <option>已婚</option>
+                                <option>未婚</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">证书：</label>
+                        <div class="col-sm-8">
+                            <input id="yysCertificate1" name="yysCertificate" class="form-control error" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">推荐理由：</label>
+                        <div class="col-sm-8">
+                            <input id="yysRecommendedReason1" name="yysRecommendedReason" class="form-control" type="text">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-8 col-sm-offset-3">
+                            <a class="btn btn-primary" id="updateYysInfo">提交</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- End Panel Other -->
+
+
+
+
+
+</div>
+<script src="/xhy/js/jquery.min.js?v=2.1.4"></script>
+<script src="/xhy/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/xhy/js/content.min.js?v=1.0.0"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="/xhy/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/xhy/js/tableExport.js"></script>
+<script src="/xhy/js/bootstrap-table-export.js"></script>
+<script src="/xhy/js/demo/bootstrap-table-demo1.min.js"></script>
+<script src="/xhy/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="/xhy/js/plugins/validate/jquery.validate.min.js"></script>
+<script>$(document).ready(function(){$(".contact-box").each(function(){animationHover(this,"pulse")})});</script>
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+
+
+
+
+
+<script>
+    $('#deleteYysInfo').click(function () {
+            var table = $('#exampleTableEvents')
+            var yysInfoList = table.bootstrapTable('getSelections')
+            yysInfo = yysInfoList[0];
+            if (yysInfo == null) {
+                swal("提示！", "请选择一行信息。", "error")
+                return
+            }
+            swal({
+                title: "您确定要删除这条信息吗",
+                text: "删除后将无法恢复，请谨慎操作！",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "是的，我要删除！",
+                cancelButtonText: "让我再考虑一下…",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function () {
+                $.ajax({
+                        url: "api/deleteYysInfo",
+                        type: "post",
+                        data: JSON.stringify({
+                            yysId: yysInfo.yysId,
+                            yysName: yysInfo.yysName,
+                            yysPhoto: yysInfo.yysPhoto,
+                            yysAge: yysInfo.yysAge,
+                            yysConstellation: yysInfo.yysConstellation,
+                            yysEducation: yysInfo.yysEducation,
+                            yysMarriage:yysInfo.yysMarriage,
+                            yysCertificate:yysInfo.yysCertificate,
+                            yysRecommendedReason:yysInfo.yysRecommendedReason
+                        }),
+
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (data) {
+                            console.log(data)
+                            if (data.code = 4) {
+                                swal("删除成功！", "您已经永久删除了这条信息。", "success")
+                            }
+                            else
+                                swal("删除失败！", "请稍后重试。", "error");
+                        },
+                        error: function (data) {
+                            swal("删除失败！", "请稍后重试。", "error");
+                        }
+                    }
+                )
+                table.bootstrapTable('remove', {filed: 'yysId', value: yysInfo.yysId})
+                table.bootstrapTable('refresh');
+
+
+            })
+        }
+    );
+
+
+</script>
+<script>
+
+    $('#addYysInfo').click(
+        function () {
+//            if (!$("#infoForm").valid()) {
+//                return;
+//            }
+            let yysId = $('#yysId').val()
+            let yysName = $('#yysName').val()
+            let yysPhoto = $('#yysPhoto').val()
+            let yysAge= $('#yysAge').val()
+            let yysConstellation= $('#yysConstellation').val()
+            let yysEducation= $('#yysEducation').val()
+            let yysMarriage= $('#yysMarriage').val()
+            let yysCertificate= $('#yysCertificate').val()
+            let yysRecommendedReason= $('#yysRecommendedReason').val()
+
+
+            $.ajax({
+                    url: "api/addYysInfo",
+                    type: "post",
+                    data: JSON.stringify({
+                        yysId: yysId,
+                        yysName: yysName,
+                        yysPhoto: yysPhoto,
+                        yysAge: yysAge,
+                        yysConstellation: yysConstellation,
+                        yysEducation: yysEducation,
+                        yysMarriage:yysMarriage,
+                        yysCertificate:yysCertificate,
+                        yysRecommendedReason:yysRecommendedReason
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#myModal').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "添加成功！", text: "您已经成功添加了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        } else if (data.code == 6) {
+                            swal({title: "添加失败！", text: "用户名已存在。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                        else
+                            swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                    },
+                    error: function (data) {
+                        $('#myModal').modal('toggle')
+                        console.log(data)
+                        swal({title: "添加失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+<script>
+    $('#editYysInfo').click(function () {
+        var table = $('#exampleTableEvents')
+        var yysInfoList = table.bootstrapTable('getSelections')
+        var yysInfo = yysInfoList[0];
+        if (yysInfo == null) {
+            swal("提示！", "请选择一行信息。", "error")
+            return
+        }
+        $('#yysId1').val(yysInfo.yysId)
+//        data-toggle="modal" data-target="#editModel"
+        $('#editModel').modal('toggle');
+    })
+
+    $('#updateYysInfo').click(
+        function () {
+            //    if (!$("#infoForm1").valid()) {
+            //       return;
+            //   }
+
+            let yysId = $('#yysId1').val()
+            let yysName = $('#yysName1').val()
+            let yysPhoto = $('#yysPhoto1').val()
+            let yysAge= $('#yysAge1').val()
+            let yysConstellation= $('#yysConstellation1').val()
+            let yysEducation= $('#yysEducation1').val()
+            let yysMarriage= $('#yysMarriage1').val()
+            let yysCertificate= $('#yysCertificate1').val()
+            let yysRecommendedReason= $('#yysRecommendedReason1').val()
+            console.log(yysId + yysName + yysPhoto+yysAge+yysConstellation + yysEducation+yysMarriage+yysCertificate+yysRecommendedReason)
+            $.ajax({
+                    url: "api/updateYysInfo",
+                    type: "post",
+                    data: JSON.stringify({
+                        yysId: yysId,
+                        yysName: yysName,
+                        yysPhoto: yysPhoto,
+                        yysAge: yysAge,
+                        yysConstellation: yysConstellation,
+                        yysEducation: yysEducation,
+                        yysMarriage:yysMarriage,
+                        yysCertificate:yysCertificate,
+                        yysRecommendedReason:yysRecommendedReason
+                    }),
+                    contentType: 'application/json;charset=utf-8',
+                    success: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        if (data.code == 4) {
+                            swal({title: "更新成功！", text: "您已经成功更新了一条记录。", type: "success"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            })
+                        }
+                        else
+                            swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                                if (ok) {
+                                    location.reload();
+                                }
+                            });
+                        $('#exampleTableEvents').bootstrapTable('refresh');
+
+                    },
+                    error: function (data) {
+                        $('#editModel').modal('hide')
+                        console.log(data)
+                        swal({title: "更新失败！", text: "请稍后重试。", type: "error"}, function (ok) {
+                            if (ok) {
+                                location.reload();
+                            }
+                        });
+                    }
+                }
+            )
+
+        }
+    )
+</script>
+
+
+
+
+
+
+
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/contacts.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:18:21 GMT -->
+</html>

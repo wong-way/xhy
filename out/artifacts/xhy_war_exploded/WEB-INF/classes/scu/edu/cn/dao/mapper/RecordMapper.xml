@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.RecordMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.Record" >
+    <id column="record_id" property="recordId" jdbcType="INTEGER" />
+    <result column="record_date" property="recordDate" jdbcType="DATE" />
+    <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="staff_id" property="staffId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="scu.edu.cn.dao.entity.Record" extends="BaseResultMap" >
+    <result column="record_content" property="recordContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    record_id, record_date, customer_id, staff_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    record_content
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from record
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from record
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.Record" >
+    insert into record (record_id, record_date, customer_id, 
+      staff_id, record_content)
+    values (#{recordId,jdbcType=INTEGER}, #{recordDate,jdbcType=DATE}, #{customerId,jdbcType=INTEGER}, 
+      #{staffId,jdbcType=INTEGER}, #{recordContent,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.Record" >
+    insert into record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        record_id,
+      </if>
+      <if test="recordDate != null" >
+        record_date,
+      </if>
+      <if test="customerId != null" >
+        customer_id,
+      </if>
+      <if test="staffId != null" >
+        staff_id,
+      </if>
+      <if test="recordContent != null" >
+        record_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="recordId != null" >
+        #{recordId,jdbcType=INTEGER},
+      </if>
+      <if test="recordDate != null" >
+        #{recordDate,jdbcType=DATE},
+      </if>
+      <if test="customerId != null" >
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="recordContent != null" >
+        #{recordContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.Record" >
+    update record
+    <set >
+      <if test="recordDate != null" >
+        record_date = #{recordDate,jdbcType=DATE},
+      </if>
+      <if test="customerId != null" >
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="staffId != null" >
+        staff_id = #{staffId,jdbcType=INTEGER},
+      </if>
+      <if test="recordContent != null" >
+        record_content = #{recordContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="scu.edu.cn.dao.entity.Record" >
+    update record
+    set record_date = #{recordDate,jdbcType=DATE},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      staff_id = #{staffId,jdbcType=INTEGER},
+      record_content = #{recordContent,jdbcType=LONGVARCHAR}
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.Record" >
+    update record
+    set record_date = #{recordDate,jdbcType=DATE},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      staff_id = #{staffId,jdbcType=INTEGER}
+    where record_id = #{recordId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="ResultMapWithBLOBs" >
+    select
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from record
+  </select>
+</mapper>

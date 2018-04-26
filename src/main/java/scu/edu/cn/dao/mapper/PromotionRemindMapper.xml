@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="scu.edu.cn.dao.mapper.PromotionRemindMapper" >
+  <resultMap id="BaseResultMap" type="scu.edu.cn.dao.entity.PromotionRemind" >
+    <id column="promotion_remind_id" property="promotionRemindId" jdbcType="INTEGER" />
+    <result column="yys_id" property="yysId" jdbcType="INTEGER" />
+    <result column="yys_current_level" property="yysCurrentLevel" jdbcType="VARCHAR" />
+    <result column="yys_next_level" property="yysNextLevel" jdbcType="VARCHAR" />
+    <result column="yys_promotional_time" property="yysPromotionalTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    promotion_remind_id, yys_id, yys_current_level, yys_next_level, yys_promotional_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from promotion_remind
+    where promotion_remind_id = #{promotionRemindId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from promotion_remind
+    where promotion_remind_id = #{promotionRemindId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="scu.edu.cn.dao.entity.PromotionRemind" >
+    insert into promotion_remind (promotion_remind_id, yys_id, yys_current_level, 
+      yys_next_level, yys_promotional_time)
+    values (#{promotionRemindId,jdbcType=INTEGER}, #{yysId,jdbcType=INTEGER}, #{yysCurrentLevel,jdbcType=VARCHAR}, 
+      #{yysNextLevel,jdbcType=VARCHAR}, #{yysPromotionalTime,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="scu.edu.cn.dao.entity.PromotionRemind" >
+    insert into promotion_remind
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="promotionRemindId != null" >
+        promotion_remind_id,
+      </if>
+      <if test="yysId != null" >
+        yys_id,
+      </if>
+      <if test="yysCurrentLevel != null" >
+        yys_current_level,
+      </if>
+      <if test="yysNextLevel != null" >
+        yys_next_level,
+      </if>
+      <if test="yysPromotionalTime != null" >
+        yys_promotional_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="promotionRemindId != null" >
+        #{promotionRemindId,jdbcType=INTEGER},
+      </if>
+      <if test="yysId != null" >
+        #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="yysCurrentLevel != null" >
+        #{yysCurrentLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yysNextLevel != null" >
+        #{yysNextLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yysPromotionalTime != null" >
+        #{yysPromotionalTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="scu.edu.cn.dao.entity.PromotionRemind" >
+    update promotion_remind
+    <set >
+      <if test="yysId != null" >
+        yys_id = #{yysId,jdbcType=INTEGER},
+      </if>
+      <if test="yysCurrentLevel != null" >
+        yys_current_level = #{yysCurrentLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yysNextLevel != null" >
+        yys_next_level = #{yysNextLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="yysPromotionalTime != null" >
+        yys_promotional_time = #{yysPromotionalTime,jdbcType=DATE},
+      </if>
+    </set>
+    where promotion_remind_id = #{promotionRemindId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="scu.edu.cn.dao.entity.PromotionRemind" >
+    update promotion_remind
+    set yys_id = #{yysId,jdbcType=INTEGER},
+      yys_current_level = #{yysCurrentLevel,jdbcType=VARCHAR},
+      yys_next_level = #{yysNextLevel,jdbcType=VARCHAR},
+      yys_promotional_time = #{yysPromotionalTime,jdbcType=DATE}
+    where promotion_remind_id = #{promotionRemindId,jdbcType=INTEGER}
+  </update>
+  <select id="selectAllPromotionRemind" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from promotion_remind
+  </select>
+</mapper>
